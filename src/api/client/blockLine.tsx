@@ -84,9 +84,9 @@ export class BlockLine extends React.Component<any, any> {
                         this.state.block.age.diffSec + " seconds" : ""}
                 </td>
                 <td className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>{this.state.block.txs.length}</td>
-                <td className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>
-                    {this.formatNumber(this.state.block.txSummary)} HYCON
-                </td>
+               {/* <td className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>*/}
+                   {/*  {this.formatNumber(this.state.block.txSummary)} HYCON */}
+            {/*     </td> */}
                 <td className="mdl-data-table__cell--non-numeric">
                     <a href={`/address/${this.state.block.miner}`}>
                         {this.state.block.miner}
