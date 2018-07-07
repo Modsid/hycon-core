@@ -52,7 +52,7 @@ export class AddressInfo extends React.Component<IAddressProps, IAddressView> {
         let minedIndex = 0
         return (
             <div>
-                <div className="contentTitle">Hycon Address</div>
+                <div className="contentTitle">Address</div>
                 <div className="sumTablesDiv">
                     <table className="tablesInRow twoTablesInRow">
                         <thead>
@@ -67,7 +67,7 @@ export class AddressInfo extends React.Component<IAddressProps, IAddressView> {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="tdSubTitle subTitle_width20">Address</td>
+                                <td className="tdSubTitle subTitle_width20">Address Hash</td>
                                 <td>{this.state.hash}</td>
                             </tr>
                             <tr>
@@ -76,9 +76,9 @@ export class AddressInfo extends React.Component<IAddressProps, IAddressView> {
                             </tr>
                         </tbody>
                     </table>
-                    <span className="QRSpan">
+                   {/* <span className="QRSpan">
                         <QRCode size={170} value={this.state.hash} />
-                    </span>
+                    </span> */}
                 </div>
                 <Tabs style={{ paddingTop: "2px" }} inkBarStyle={{ backgroundColor: "#000" }}>
                     <Tab label="Transaction" style={{ backgroundColor: "#FFF", color: "#000" }}>
