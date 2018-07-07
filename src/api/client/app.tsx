@@ -139,11 +139,6 @@ export class App extends React.Component<{ rest: IRest }, any> {
             return <Redirect to={`/block/${this.state.blockHash}`} />
         }
         return (
-<style>
-div.mdl-textfield__expandable-holder {
-    width:5000px;
-}
-</style>
             <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
                 <header className="mdl-layout__header" >
                     <div className="mdl-layout__header-row">
