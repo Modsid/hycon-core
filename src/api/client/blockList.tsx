@@ -74,13 +74,14 @@ export class BlockList extends React.Component<any, any> {
             return < div ></div >
         }
         return (
+            
             <div>
+             <div classname="Networkhash">
                   <span style={{ float: "right", color: "grey", fontSize: "25px", paddingTop: "2%" }}>
                   <span style={{ float: "right", color: "grey" }}>{this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
                   <span style={{ float: "right", color: "grey", fontSize: "12px" }}>Network Hash Rate</span>
                                 </span>
                             </div>
-            <div>
                 <div className="contentTitle">
                     EXPLORE BLOCKS
                     <span className="seeMoreLink">
