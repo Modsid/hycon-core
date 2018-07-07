@@ -126,7 +126,7 @@ export class BlockView extends React.Component<IBlockProps, IBlockViewState> {
                             <td>{date.toString()}</td>
                         </tr>
                         <tr>
-                            <td className="tdSubTitle subTitle_width20">Num of Txs</td>
+                            <td className="tdSubTitle subTitle_width20">Transactions</td>
                             <td>{this.state.block.txs.length}</td>
                         </tr>
                         <tr>
