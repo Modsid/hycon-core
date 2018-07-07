@@ -4,13 +4,15 @@ import update = require("react-addons-update")
 import * as ReactPaginate from "react-paginate"
 import { Link } from "react-router-dom"
 import { BlockLine } from "./blockLine"
-import { IBlock, IRest } from "./rest"
+import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
+import { MinerView } from "./minerView"
 
 interface IBlockListView {
     rest: IRest
     blocks: IBlock[]
 }
+
 export class BlockList extends React.Component<any, any> {
     public intervalId: any // NodeJS.Timer
     public mounted: boolean = false
@@ -72,6 +74,12 @@ export class BlockList extends React.Component<any, any> {
             return < div ></div >
         }
         return (
+            <div>
+                  <span style={{ float: "right", color: "grey", fontSize: "25px", paddingTop: "2%" }}>
+                  <span style={{ float: "right", color: "grey" }}>{this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
+                  <span style={{ float: "right", color: "grey", fontSize: "12px" }}>Network Hash Rate</span>
+                                </span>
+                            </div>
             <div>
                 <div className="contentTitle">
                     EXPLORE BLOCKS
