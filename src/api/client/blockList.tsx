@@ -27,7 +27,7 @@ export class BlockList extends React.Component<any, any> {
         this.getRecentBlockList(this.state.index)
         this.intervalId = setInterval(() => {
             this.getRecentBlockList(this.state.index)
-        }, 10000)
+        }, 2000)
     }
 
     public getRecentBlockList(index: number) {
