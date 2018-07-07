@@ -74,7 +74,7 @@ export class BlockList extends React.Component<any, any> {
         return (
             <div>
                 <div className="contentTitle">
-                    LATEST BLOCKS
+                    EXPLORE BLOCKS
                     <span className="seeMoreLink">
                         <ReactPaginate previousLabel={"PREV"}
                             nextLabel={"NEXT"}
@@ -97,10 +97,10 @@ export class BlockList extends React.Component<any, any> {
                         <thead>
                             <tr>
                                 <th className="mdl-data-table__cell--non-numeric">Height</th>
-                                <th className="mdl-data-table__cell--non-numeric">Age</th>
+                                <th className="mdl-data-table__cell--non-numeric">Time</th>
                                 <th className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>Transactions</th>
-                                <th className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>Total Sent</th>
-                                <th className="mdl-data-table__cell--non-numeric">Relayed By</th>
+                               {/* <th className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>Total Sent</th> */}
+                                <th className="mdl-data-table__cell--non-numeric">Miner Address</th>
                                 <th className="mdl-data-table__cell--numeric">Size(kB)</th>
                             </tr>
                         </thead>
