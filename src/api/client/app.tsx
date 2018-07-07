@@ -179,10 +179,10 @@ export class App extends React.Component<{ rest: IRest }, any> {
                             <Route exact path="/txPool" component={this.txPool} />
                             <Route exact path="/address/:hash" component={this.addressInfo} />
                             <Route exact path="/transaction/:name" component={this.transaction} />
-                        {/*    <Route exact path="/wallet/addWallet" component={this.addWallet} />*/}
-                          {/*  <Route exact path="/wallet" component={this.wallet} />*/}
-                           {/* <Route exact path="/wallet/recoverWallet" component={this.recoverWallet} />*/}
-                           {/* <Route exact path="/wallet/detail/:name" component={this.walletDetail} />*/}
+                        {/*    <Route exact path="/wallet/addWallet" component={this.addWallet} /> */}
+                          {/*  <Route exact path="/wallet" component={this.wallet} /> */}
+                           {/* <Route exact path="/wallet/recoverWallet" component={this.recoverWallet} /> */}
+                           {/* <Route exact path="/wallet/detail/:name" component={this.walletDetail} /> */}
                             <Route exact path="/peersView" component={this.peersView} />
                             <Route exact path="/minerView" component={this.minerView} />
                         </Switch>
