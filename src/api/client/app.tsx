@@ -29,6 +29,7 @@ import { NotFound } from "./notFound"
 import CardContent from "@material-ui/core/CardContent"
 import { Card, CircularProgress } from "material-ui"
 import update = require("react-addons-update")
+import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
 
 export const routes: RouteConfig[] = [
     { exact: true, path: "/" },
@@ -180,10 +181,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
                     <div className="page-content">
 
  <div className="miner_hash">
-                        <span style={{ float: "center", color: "blue", fontSize: "25px", paddingTop: "2%" }}>
-                        <span style={{ float: "center", color: "blue" }}>{this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
-                        <span style={{ float: "center", color: "blue", fontSize: "12px" }}> Global Hash Rate</span>
-                                </span>
+        <span style={{ float: "center", color: "blue", fontSize: "12px" }}> Global Hash Rate {this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
                             </div>
                         <Switch>
                             {/* <Route exact path='/' component={() => { return <Home name={this.state.name} /> }} /> */}
