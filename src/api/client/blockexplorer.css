@@ -1,12 +1,12 @@
 .mdl-layout__header {
-  background-color: #084b8a;
+  background-color: #000000;
 }
 .contentTitle {
   margin-top: 1em;
   margin-bottom: 1em;
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
-  color: #6e6e6e;
+  color: #151414;
 }
 .inCardTitle {
   margin-top: 0em;
