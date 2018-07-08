@@ -46,7 +46,7 @@ export class AddressInfo extends React.Component<IAddressProps, IAddressView> {
     }
     public render() {
         if (this.state.address === undefined) {
-            return < div ></div >
+            return < div > <div className="notfound">Address Not Found</div></div >
         }
         let count = 0
         let minedIndex = 0
