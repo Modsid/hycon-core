@@ -6,6 +6,24 @@ import { Link } from "react-router-dom"
 import { BlockLine } from "./blockLine"
 import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
+import { MinerView } from "./minerView"
+interface IMinerViewProps {
+    rest: IRest
+}
+
+interface IMinerView {
+    rest: IRest
+    dialogOpen: boolean
+    wallets: IHyconWallet[]
+    isLoading: boolean
+    minerAddress: string
+    cpuMinerCount: number
+    adjustCpuMiner: boolean
+    tmpCpuCount: number
+    miner?: IMiner
+}
+
+
 
 interface IBlockListView {
     rest: IRest
@@ -29,6 +47,8 @@ export class BlockList extends React.Component<any, any> {
         this.intervalId = setInterval(() => {
             this.getRecentBlockList(this.state.index)
         }, 2000)
+      this.state.rest.getMiner().then((data: IMiner) => {
+            this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount })
     }
 
     public getRecentBlockList(index: number) {
@@ -77,7 +97,8 @@ export class BlockList extends React.Component<any, any> {
             <div>
    
                 <div className="contentTitle">
-                    EXPLORE BLOCKS
+            <span className="minerhas"> Network Hash Rate: {this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
+                    EXPLORE BLOCKS 
                     <span className="seeMoreLink">
                         <ReactPaginate previousLabel={"PREV"}
                             nextLabel={"NEXT"}
