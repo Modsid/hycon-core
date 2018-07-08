@@ -28,12 +28,15 @@ export class BlockList extends React.Component<any, any> {
     public componentDidMount() {
         this.getRecentBlockList(this.state.index)
         this.intervalId = setInterval(() => {
+            this.getRecentBlockList(this.state.index)
+            this.state.miner.networkHashRate.toLocaleString()
+            
+        }, 2000)
             this.state.rest.getMiner().then((data: IMiner) => {
             this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount })
       this.state.rest.setLoading(false)    
       })
-            this.getRecentBlockList(this.state.index)
-        }, 2000)
+            
       
     }
 
@@ -90,7 +93,7 @@ export class BlockList extends React.Component<any, any> {
                             nextLabel={"NEXT"}
                             breakLabel={<a>...</a>}
                             breakClassName={"break-me"}
-                            pageCount={10}
+                            pageCount={this.state.length}
                             marginPagesDisplayed={1}
                             pageRangeDisplayed={9}
                             onPageChange={this.handlePageClick}
