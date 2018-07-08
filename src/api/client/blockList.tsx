@@ -28,12 +28,13 @@ export class BlockList extends React.Component<any, any> {
     public componentDidMount() {
         this.getRecentBlockList(this.state.index)
         this.intervalId = setInterval(() => {
-            this.getRecentBlockList(this.state.index)
-        }, 2000)
-      this.state.rest.getMiner().then((data: IMiner) => {
+            this.state.rest.getMiner().then((data: IMiner) => {
             this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount })
       this.state.rest.setLoading(false)    
       })
+            this.getRecentBlockList(this.state.index)
+        }, 2000)
+      
     }
 
     public getRecentBlockList(index: number) {
@@ -82,14 +83,14 @@ export class BlockList extends React.Component<any, any> {
             <div>
    
                 <div className="contentTitle">
-            <span className="minerhas"> Network Hash Rate: {this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
+            <span className="minerhash"> Network Hash Rate: {this.state.miner.networkHashRate.toLocaleString()} H/s</span> <br /><br /><br />
                     EXPLORE BLOCKS 
                     <span className="seeMoreLink">
                         <ReactPaginate previousLabel={"PREV"}
                             nextLabel={"NEXT"}
                             breakLabel={<a>...</a>}
                             breakClassName={"break-me"}
-                            pageCount={this.state.length}
+                            pageCount={10}
                             marginPagesDisplayed={1}
                             pageRangeDisplayed={9}
                             onPageChange={this.handlePageClick}
