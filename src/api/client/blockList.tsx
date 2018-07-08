@@ -7,23 +7,6 @@ import { BlockLine } from "./blockLine"
 import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
 import { MinerView } from "./minerView"
-interface IMinerViewProps {
-    rest: IRest
-}
-
-interface IMinerView {
-    rest: IRest
-    dialogOpen: boolean
-    wallets: IHyconWallet[]
-    isLoading: boolean
-    minerAddress: string
-    cpuMinerCount: number
-    adjustCpuMiner: boolean
-    tmpCpuCount: number
-    miner?: IMiner
-}
-
-
 
 interface IBlockListView {
     rest: IRest
@@ -49,6 +32,8 @@ export class BlockList extends React.Component<any, any> {
         }, 2000)
       this.state.rest.getMiner().then((data: IMiner) => {
             this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount })
+      this.state.rest.setLoading(false)    
+      })
     }
 
     public getRecentBlockList(index: number) {
