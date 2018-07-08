@@ -9,7 +9,7 @@ import { Home } from "./home"
 import { PeerDetailsView } from "./peerDetails"
 // import { PeersList } from "./peersList"
 import { PeersView } from "./peersView"
-import { IRest } from "./rest"
+import { IMiner, IRest } from "./rest"
 import { Transaction } from "./transaction"
 import { TxPoolList } from "./txPoolList"
 import { TxView } from "./txView"
@@ -23,6 +23,12 @@ import { WalletSummary } from "./walletSummary"
 import { WalletView } from "./walletView"
 
 import { NotFound } from "./notFound"
+
+
+
+import CardContent from "@material-ui/core/CardContent"
+import { Card, CircularProgress } from "material-ui"
+import update = require("react-addons-update")
 
 export const routes: RouteConfig[] = [
     { exact: true, path: "/" },
@@ -172,6 +178,13 @@ export class App extends React.Component<{ rest: IRest }, any> {
                 </header>
                 <main className="mdl-layout__content main">
                     <div className="page-content">
+
+ <div className="miner_hash">
+                        <span style={{ float: "center", color: "blue", fontSize: "25px", paddingTop: "2%" }}>
+                        <span style={{ float: "center", color: "blue" }}>{this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
+                        <span style={{ float: "center", color: "blue", fontSize: "12px" }}> Global Hash Rate</span>
+                                </span>
+                            </div>
                         <Switch>
                             {/* <Route exact path='/' component={() => { return <Home name={this.state.name} /> }} /> */}
                             <Route exact path="/" component={this.home} />
