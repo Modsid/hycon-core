@@ -164,7 +164,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
                             {/* <Link className="mdl-navigation__link" to="/block">Block</Link> */}
                             <Link className="mdl-navigation__link" to="/txPool">Transactions</Link>
                             {/* <Link className="mdl-navigation__link" to="/wallet">Wallet</Link> */}
-                            <Link className="mdl-navigation__link" to="/peersView">Peers List</Link>
+                            <Link className="mdl-navigation__link" to="/peersView">Peers</Link>
                           {/*  <Link className="mdl-navigation__link" to="/minerView">Miner</Link> */}
                         </nav>
                     </div>
