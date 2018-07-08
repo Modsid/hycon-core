@@ -142,7 +142,8 @@ export class App extends React.Component<{ rest: IRest }, any> {
             <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
                 <header className="mdl-layout__header" >
                     <div className="mdl-layout__header-row">
-                        <span className="mdl-layout-title">Hycon Blockexplorer</span>
+                    <img src={'https://static.hycon.io/include/images/logo-hycon-sq_ball-2-190x208.png'} alt="logo" max-height="95" max-width="104">
+                        <span className="mdl-layout-title">Hycon Tracker</span>
                         <div className="mdl-layout-spacer" />
                         <nav className="mdl-navigation">
                             <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
