@@ -143,7 +143,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
     }
     public render() {
         if (this.state.redirect) {
-            return <Redirect to={`/block/${this.state.blockHash}`} />
+            return <Redirect to={`/address/${this.state.blockHash}`} />
         }
         return (
             <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -160,7 +160,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
                                 <form>
                                     <div className="mdl-textfield__expandable-holder">
                                         <input
-                                            className="mdl-textfield__input searchBox" type="text" placeholder="Block Hash"
+                                            className="mdl-textfield__input searchBox" type="text" placeholder="Enter Wallet Address"
                                             onChange={(data) => this.handleBlockHash(data)}
                                             onKeyPress={(event) => { if (event.key === "Enter") { this.searchBlock(event) } }}
                                         />
@@ -180,9 +180,9 @@ export class App extends React.Component<{ rest: IRest }, any> {
                 <main className="mdl-layout__content main">
                     <div className="page-content">
 
- <div className="miner_hash">
+{/* <div className="miner_hash">
         <span className="miner_hashview"> Global Hash Rate {this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
-                            </div>
+                            </div> */}
                         <Switch>
                             {/* <Route exact path='/' component={() => { return <Home name={this.state.name} /> }} /> */}
                             <Route exact path="/" component={this.home} />
