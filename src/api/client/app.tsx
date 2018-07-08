@@ -179,10 +179,6 @@ export class App extends React.Component<{ rest: IRest }, any> {
                 </header>
                 <main className="mdl-layout__content main">
                     <div className="page-content">
-
-{/* <div className="miner_hash">
-        <span className="miner_hashview"> Global Hash Rate {this.state.miner.networkHashRate.toLocaleString()} H/s</span><br />
-                            </div> */}
                         <Switch>
                             {/* <Route exact path='/' component={() => { return <Home name={this.state.name} /> }} /> */}
                             <Route exact path="/" component={this.home} />
