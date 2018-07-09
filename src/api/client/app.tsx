@@ -192,7 +192,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
                            {/* <Route exact path="/wallet/recoverWallet" component={this.recoverWallet} /> */}
                            {/* <Route exact path="/wallet/detail/:name" component={this.walletDetail} /> */}
                             <Route exact path="/peersView" component={this.peersView} />
-                            <Route exact path="/minerView" component={this.minerView} />
+                            <Route exact path="/minerView" component={this.home} />
                         </Switch>
                     </div>
                 </main>
