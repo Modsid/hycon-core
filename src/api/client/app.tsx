@@ -149,7 +149,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
             <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
                 <header className="mdl-layout__header" >
                     <div className="mdl-layout__header-row">
-                    <img className="img-responsive" src={'https://soccomedia.com/clients/hycon/wp-content/uploads/2018/01/logo-hycon-sq_ball-2.png'} alt={"Logo"} style={{width:"32px",height:"32px"}} >
+                    <img  src={'https://soccomedia.com/clients/hycon/wp-content/uploads/2018/01/logo-hycon-sq_ball-2.png'} alt={"Logo"} style={{width:"32px",height:"32px"}} className="img-responsive"/>
                         <span className="mdl-layout-title">Hycon Tracker</span>
                         <div className="mdl-layout-spacer" />
                         <nav className="mdl-navigation">
