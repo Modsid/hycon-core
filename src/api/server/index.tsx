@@ -23,7 +23,8 @@ export function indexRender(
         <html>
             <head>
                 <meta charset="UTF-8" />
-                <title>Hycon BLockchain Tracker</title>
+                <title>Hycon Blockchain Tracker</title>
+                <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
                 <script src="/react/umd/react.development.js"></script>
                 <script src="/react-dom/umd/react-dom.development.js"></script>
                 <script src="/react-router/umd/react-router.js"></script>
@@ -31,7 +32,7 @@ export function indexRender(
                 <script src="/react-router-dom/umd/react-router-dom.js"></script>
                 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
                 <link rel="stylesheet" href="/styles.css" type="text/css">
-                <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+                
            
             </head>
             <body>
