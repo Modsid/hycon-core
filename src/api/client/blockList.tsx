@@ -86,23 +86,7 @@ export class BlockList extends React.Component<any, any> {
             <div>
    <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} H/s</span></div></div></div></div>
                 <div className="contentTitle">
-            
-                    EXPLORE BLOCKS 
-                    <span className="seeMoreLink">
-                        <ReactPaginate previousLabel={"PREV"}
-                            nextLabel={"NEXT"}
-                            breakLabel={<a>...</a>}
-                            breakClassName={"break-me"}
-                            pageCount={this.state.length}
-                            marginPagesDisplayed={1}
-                            pageRangeDisplayed={9}
-                            onPageChange={this.handlePageClick}
-                            containerClassName={"pagination"}
-                            activeClassName={"active"}
-                            initialPage={this.state.index}
-                            disableInitialCallback={true}
-                        />
-                    </span>
+            <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 text="jss313 jss319">Latest Blocks</h1></div></div>
                 </div>
 
                 <div>
