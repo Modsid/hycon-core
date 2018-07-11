@@ -178,6 +178,9 @@ export class App extends React.Component<{ rest: IRest }, any> {
                     <div className={`mdl-progress mdl-js-progress mdl-progress__indeterminate progressBar ${this.state.loading ? "" : "hide"}`} />
                 </header>
                 <main className="mdl-layout__content main">
+
+<div class="jss256 jss259 jss257 jss468 jss406 jss467"><div class="jss466"><h1 class="jss313 jss319">Blockchain Explorer</h1></div><div class="jss465"><div class="jss361"><div class="jss369 jss362 jss365"><label class="jss378 jss373 jss368 jss374 jss377" data-shrink="false" for="textField-search-field">Check address balance</label><div class="jss383 jss384 jss387"><input aria-invalid="false" aria-required="false" class="jss391" id="textField-search-field" type="text" value=""></div></div><button tabindex="0" class="jss310 jss286 jss295 jss296 jss298 jss299 jss363" type="button"><span class="jss287"><p class="jss313 jss322 jss364">SEARCH</p></span><span class="jss337"></span></button></div></div></div>
+
                     <div className="page-content">
                         <Switch>
                             {/* <Route exact path='/' component={() => { return <Home name={this.state.name} /> }} /> */}
