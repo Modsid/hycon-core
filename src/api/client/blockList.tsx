@@ -102,7 +102,7 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public render() {
-        let this.state.miner.networkHashRate=0
+        this.state.miner.networkHashRate=0
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
             return < div ></div >
