@@ -14,6 +14,7 @@ interface IBlockListView {
 }
 
 export class BlockList extends React.Component<any, any> {
+    public errMsg1: string = "Please enter a valid Hash value consisting of numbers and English"
     public intervalId: any // NodeJS.Timer
     public mounted: boolean = false
     constructor(props: any) {
