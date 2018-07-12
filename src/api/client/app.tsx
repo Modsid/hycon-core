@@ -187,8 +187,8 @@ export class App extends React.Component<{ rest: IRest }, any> {
 <input aria-invalid="false" aria-required="false" className="jss391" id="textField-search-field" onChange={(data) => this.handleBlockHash(data)} type="text" value=""/>
 </div>
 </div>
-<button tabIndex="0" className="jss310 jss286 jss295 jss296 jss298 jss299 jss363" type="button"><span className="jss287">
-<p className="jss313 jss322 jss364">SEARCH</p></span><span className="jss337" onClick={(event) => { this.searchBlock(event) } }} />
+<button tabIndex="0" className="jss310 jss286 jss295 jss296 jss298 jss299 jss363" type="button"><span className="jss287"onClick={(event) => { this.searchBlock(event) } }} >
+<p className="jss313 jss322 jss364">SEARCH</p></span><span className="jss337">
 </span>
 </button>
 </div>
