@@ -111,7 +111,11 @@ export class BlockList extends React.Component<any, any> {
         }
         
         return (
- <div className="jss256 jss259 jss257 jss468 jss406 jss467">
+ 
+              
+            <div>
+
+<div className="jss256 jss259 jss257 jss468 jss406 jss467">
 <div className="jss466"><h1 className="jss313 jss319">Check Wallet Balance</h1></div>
 <div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365">
 <label className="jss378 jss373 jss368 jss374 jss377" data-shrink="false" htmlFor="textField-search-field">Check address balance</label>
@@ -129,13 +133,6 @@ export class BlockList extends React.Component<any, any> {
 </div>
 </div>
 </div>
-            
-            
-            
-            
-            
-            
-            <div>
    <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} H/s</span></div></div></div></div>
                 <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
