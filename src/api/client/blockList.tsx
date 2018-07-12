@@ -92,10 +92,14 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public render() {
+        if (this.state.redirect) {
+            return <Redirect to={`/address/${this.state.blockHash}`} />
+        }
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
             return < div ></div >
         }
+        
         return (
             
             
