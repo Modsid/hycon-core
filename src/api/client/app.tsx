@@ -188,7 +188,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
 </div>
 </div>
 <button tabindex="0" className="jss310 jss286 jss295 jss296 jss298 jss299 jss363" type="button"><span className="jss287">
-<p className="jss313 jss322 jss364">SEARCH</p></span><span className="jss337" onclick={(event) => { if (event.key === "Enter") { this.searchBlock(event) } }} />
+<p className="jss313 jss322 jss364">SEARCH</p></span><span className="jss337" onclick={(event) => { if (event.key === "Enter") { this.searchBlock(event) } }} >
 </span>
 </button>
 </div>
