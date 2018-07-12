@@ -39,6 +39,20 @@ export class BlockList extends React.Component<any, any> {
             
       
     }
+    
+    public handleBlockHash(data: any) {
+        this.setState({ blockHash: data.target.value })
+    }
+    public searchBlock(event: any) {
+        if (this.state.blockHash === undefined) {
+            event.preventDefault()
+        } else if (!/^[a-zA-Z0-9]+$/.test(this.state.blockHash)) {
+            event.preventDefault()
+            if (alert(this.errMsg1)) { window.location.reload() }
+        } else {
+            this.setState({ redirect: true })
+        }
+    }
 
     public getRecentBlockList(index: number) {
         this.state.rest.getBlockList(index).then((result: { blocks: IBlock[], length: number }) => {
