@@ -30,7 +30,6 @@ export class BlockList extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
         this.state = { blocks: [], rest: props.rest, length: 0, index: 0 }
-        this.state.miner.networkHashRate=0
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -103,17 +102,14 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public render() {
-        if (this.state.redirect) {
-            return <Redirect to={`/address/${this.state.blockHash}`} />
-        }
+        let this.state.miner.networkHashRate=0
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
             return < div ></div >
         }
-if (this.state.miner === undefined) {
-            return <div></div>
+            if (this.state.redirect) {
+            return <Redirect to={`/address/${this.state.blockHash}`} />
         }
-        
         return (
  
               
