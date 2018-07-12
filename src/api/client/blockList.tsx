@@ -36,14 +36,15 @@ export class BlockList extends React.Component<any, any> {
 
     public componentDidMount() {
         this.getRecentBlockList(this.state.index)
+        this.state.rest.getMiner().then((data: IMiner) => {
+            this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount })
+      this.state.rest.setLoading(false) 
         this.intervalId = setInterval(() => {
             this.getRecentBlockList(this.state.index)
-            this.state.miner.networkHashRate.toLocaleString()
+            this.state.rest.getMiner()
             
-        }, 2000)
-            this.state.rest.getMiner().then((data: IMiner) => {
-            this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount })
-      this.state.rest.setLoading(false)    
+        }, 15000)
+               
       })
             
       
@@ -118,7 +119,7 @@ export class BlockList extends React.Component<any, any> {
 <div className="jss256 jss259 jss257 jss468 jss406 jss467">
 <div className="jss466"><h1 className="jss313 jss319">Check Wallet Balance</h1></div>
 <div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365">
-<label className="jss378 jss373 jss368 jss374 jss377" data-shrink="false" htmlFor="textField-search-field">Check address balance</label>
+<label className="jss378 jss373 jss368 jss374 jss377" data-shrink="true" htmlFor="textField-search-field">Enter Address</label>
 <div className="jss383 jss384 jss387">
 <input aria-invalid="false" aria-required="false" className="jss391" id="textField-search-field" onChange={(data) => this.handleBlockHash(data)} onKeyPress={(event) => { if (event.key === "Enter") { this.searchBlock(event) } }} type="text"/>
 </div>
