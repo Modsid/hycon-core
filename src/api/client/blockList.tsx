@@ -10,9 +10,7 @@ import { MinerView } from "./minerView"
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { RouteConfig } from "react-router-config"
-import { Link, Route, Switch } from "react-router-dom"
 import { Home } from "./home"
-import update = require("react-addons-update")
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
 import CardContent from "@material-ui/core/CardContent"
 import { Card, CircularProgress } from "material-ui"
