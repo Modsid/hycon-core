@@ -188,8 +188,10 @@ export class App extends React.Component<{ rest: IRest }, any> {
 </div>
 </div>
 
-<button tabIndex="0" className="jss310 jss286 jss295 jss296 jss298 jss299 jss363" type="button"><span className="jss287" onClick={(event) => { this.searchBlock(event) } }}>
-<p className="jss313 jss322 jss364">SEARCH</p></span>
+<button tabIndex="0" className="jss310 jss286 jss295 jss296 jss298 jss299 jss363" type="button" onClick={(event) => { this.searchBlock(event) } }}> 
+<span className="jss287" >
+<p className="jss313 jss322 jss364">SEARCH</p>
+</span>
 <span className="jss337">
 </span>
 </button>
