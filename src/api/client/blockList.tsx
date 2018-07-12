@@ -30,6 +30,7 @@ export class BlockList extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
         this.state = { blocks: [], rest: props.rest, length: 0, index: 0 }
+        this.state.miner.networkHashRate=0
     }
     public componentWillUnmount() {
         this.mounted = false
