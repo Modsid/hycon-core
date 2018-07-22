@@ -848,7 +848,7 @@ export class RestServer implements IRest {
         const currentDiff = this.consensus.getCurrentDiff()
         let networkHashRate = 0
         if (currentDiff !== 0) {
-            networkHashRate = 1 / (currentDiff * 30 * Math.LN2)
+            networkHashRate = 1 / (currentDiff * DifficultyAdjuster.getTargetTime())
         }
         return { cpuHashRate: minerInfo.hashRate, networkHashRate: Math.round(networkHashRate), currentMinerAddress: minerInfo.address, cpuCount: minerInfo.cpuCount }
     }
