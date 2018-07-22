@@ -4,6 +4,7 @@ import opn = require("opn")
 import { Address } from "../../common/address"
 import { BlockHeader } from "../../common/blockHeader"
 import { ITxPool } from "../../common/itxPool"
+import { DifficultyAdjuster } from "../../consensus/difficultyAdjuster"
 import { PrivateKey } from "../../common/privateKey"
 import { Tx } from "../../common/tx"
 import { SignedTx } from "../../common/txSigned"
