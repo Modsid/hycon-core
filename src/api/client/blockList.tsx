@@ -119,9 +119,9 @@ export class BlockList extends React.Component<any, any> {
 <div className="jss256 jss259 jss257 jss468 jss406 jss467">
 <div className="jss466"><h1 className="jss313 jss319">Check Wallet Balance</h1></div>
 <div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365">
-<label className="jss378 jss373 jss368 jss374 jss377" data-shrink="true" htmlFor="textField-search-field">Enter Address</label>
+<label className="jss378 jss373 jss368 jss374 jss377" data-shrink="true" htmlFor="textField-search-field"></label>
 <div className="jss383 jss384 jss387">
-<input aria-invalid="false" aria-required="false" className="jss391" id="textField-search-field" onChange={(data) => this.handleBlockHash(data)} onKeyPress={(event) => { if (event.key === "Enter") { this.searchBlock(event) } }} type="text"/>
+<input aria-invalid="false" aria-required="false" className="jss391" id="textField-search-field" onChange={(data) => this.handleBlockHash(data)}  placeholder="Enter Address" onKeyPress={(event) => { if (event.key === "Enter") { this.searchBlock(event) } }} type="text"/>
 </div>
 </div>
 <button  className="jss310 jss286 jss295 jss296 jss298 jss299 jss363" type="button" onClick={(event) => { this.searchBlock(event) } }> 
