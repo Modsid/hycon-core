@@ -118,7 +118,7 @@ export class BlockList extends React.Component<any, any> {
  
               
             <div>
-
+<div className=" donation jss466"><a href="http://htracker.info/address/H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9" className="donatetext jss313 jss319">Donate:H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9</a></div>
 <div className="jss256 jss259 jss257 jss468 jss406 jss467">
 <div className="jss466"><h1 className="jss313 jss319">Check Wallet Balance/Transaction Status</h1></div>
 <div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365">
