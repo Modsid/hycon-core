@@ -13,6 +13,9 @@ import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText }
 import CardContent from "@material-ui/core/CardContent"
 import { Card, CircularProgress } from "material-ui"
 
+const API = 'https://www.okex.com/api/v1/ticker.do?symbol=';
+const HYC = 'hyc_btc';
+const BTC = 'btc_usdt';
 
 
 
@@ -27,7 +30,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = { blocks: [], rest: props.rest, length: 0, index: 0 }
+        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, price_hyc: [], price_btc: [] }
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -35,6 +38,17 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public componentDidMount() {
+        
+        fetch(API + HYC)
+      .then(response => response.json())
+      .then(data => this.setState({ price_hyc: data.price_hyc }));
+        
+      fetch(API + BTC)
+      .then(response => response.json())
+      .then(data => this.setState({ price_btc: data.price_btc }));  
+        
+        
+        
         this.getRecentBlockList(this.state.index)
         this.state.rest.getMiner().then((data: IMiner) => {
             this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount })
@@ -101,6 +115,8 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public render() {
+        const { price_hyc } = this.state;
+        const { price_btc } = this.state;
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
             return < div ></div >
@@ -138,6 +154,10 @@ export class BlockList extends React.Component<any, any> {
 </div>
 </div>
    <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} KH/s</span></div></div></div></div>
+
+
+   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781">  {price_hyc.map(price=>{return <div> {price.ticker.last</div>})} </span></div></div></div></div>
+
                 <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
                 </div>
