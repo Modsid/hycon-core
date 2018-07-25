@@ -117,7 +117,6 @@ export class BlockList extends React.Component<any, any> {
     public render() {
         const { price_hyc } = this.state;
         const { price_btc } = this.state;
-        let price: price_hyc;
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
             return < div ></div >
