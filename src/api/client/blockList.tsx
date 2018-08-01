@@ -125,6 +125,10 @@ export class BlockList extends React.Component<any, any> {
  if (this.state.miner === undefined) {
             return <div></div>
         }
+if (price_hyc === undefined) {
+            return <div></div>
+        }
+
         return (
  
               
