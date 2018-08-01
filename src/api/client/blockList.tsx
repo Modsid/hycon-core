@@ -41,7 +41,12 @@ export class BlockList extends React.Component<any, any> {
         
         fetch(API + HYC)
       .then(response => response.json())
-      .then(data => this.setState({ price_hyc: data.price_hyc }));
+      .then(parsedJSON => parsedJSON.ticker.map( price_hyc => (
+            {
+                price_h:'${price_hyc.last}'
+            }
+            )))
+      .then(price => this.setState({ price, isLoading:false }));
         
       fetch(API + BTC)
       .then(response => response.json())
@@ -115,7 +120,7 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public render() {
-        const { price_hyc } = this.state;
+        const { isLoading, price } = this.state;
         const { price_btc } = this.state;
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
@@ -156,7 +161,7 @@ export class BlockList extends React.Component<any, any> {
    <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} KH/s</span></div></div></div></div>
 
 
-   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781">  {price_hyc.map(price=><div key={price.ticker}> <li> {price.ticker.last} </li> </div>)} </span></div></div></div></div>
+   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> <li> {price.price_h} </li> </div>)} </span></div></div></div></div>
 
                 <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
