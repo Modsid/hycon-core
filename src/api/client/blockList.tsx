@@ -28,7 +28,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, price_hyc: [], price_btc: [] }
+        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, price_hyc: []}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -39,7 +39,7 @@ export class BlockList extends React.Component<any, any> {
         
         fetch(API)
       .then(response => response.json())
-      .then(data => this.setState({ price_hyc: data.price_hyc }));
+      .then(data => this.setState({ price_hyc: data.price_hyc.value }));
         
         
         
@@ -111,7 +111,7 @@ export class BlockList extends React.Component<any, any> {
 
     public render() {
         const { price_hyc } = this.state;
-        const { price_btc } = this.state;
+        
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
             return < div ></div >
@@ -151,7 +151,7 @@ export class BlockList extends React.Component<any, any> {
    <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} KH/s</span></div></div></div></div>
 
 
-   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {price_hyc.map((price) => <div> <span> {price.value}</span> Sats </div>)} </span></div></div></div></div>
+   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {price_hyc} Sats</span></div></div></div></div>
 
                 <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
