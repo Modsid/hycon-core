@@ -39,7 +39,7 @@ export class BlockList extends React.Component<any, any> {
         
         fetch(API)
       .then(response => response.json())
-      .then(data => console.log(data);
+      .then(data => console.log(data));
         
         
         
@@ -126,9 +126,9 @@ export class BlockList extends React.Component<any, any> {
  if (this.state.miner === undefined) {
             return <div></div>
         }
-if (price_hyc === undefined) {
-            return <div></div>
-        }
+//if (price_hyc === undefined) {
+//            return <div></div>
+  //      }
 
         return (
  
