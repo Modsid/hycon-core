@@ -39,7 +39,8 @@ export class BlockList extends React.Component<any, any> {
         
         fetch(API)
       .then(response => response.json())
-      .then(data => this.setState({ price_hyc: data.price_hyc.value }));
+      .then(data => console.log(data);
+        
         
         
         
@@ -110,7 +111,7 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public render() {
-        const { price_hyc } = this.state;
+      //  const { price_hyc } = this.state;
         
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
@@ -155,7 +156,7 @@ if (price_hyc === undefined) {
    <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} KH/s</span></div></div></div></div>
 
 
-   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {price_hyc} Sats</span></div></div></div></div>
+{/*  <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {price_hyc} Sats</span></div></div></div></div> */}
 
                 <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
