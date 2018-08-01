@@ -13,9 +13,7 @@ import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText }
 import CardContent from "@material-ui/core/CardContent"
 import { Card, CircularProgress } from "material-ui"
 
-const API = 'https://www.okex.com/api/v1/ticker.do?symbol=';
-const HYC = 'hyc_btc';
-const BTC = 'btc_usdt';
+const API = 'https://coincodex.com/api/exchange/get_markets_for_coin_summary/HYC/';
 
 
 
@@ -39,13 +37,10 @@ export class BlockList extends React.Component<any, any> {
 
     public componentDidMount() {
         
-        fetch(API + HYC)
+        fetch(API)
       .then(response => response.json())
       .then(data => this.setState({ price_hyc: data.price_hyc }));
         
-      fetch(API + BTC)
-      .then(response => response.json())
-      .then(data => this.setState({ price_btc: data.price_btc }));  
         
         
         
@@ -156,7 +151,7 @@ export class BlockList extends React.Component<any, any> {
    <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} KH/s</span></div></div></div></div>
 
 
-   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {price_hyc.map((price) => <div> <span> {price.ticker.last}</span> Sats </div>)} </span></div></div></div></div>
+   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {price_hyc.map((price) => <div> <span> {price.value}</span> Sats </div>)} </span></div></div></div></div>
 
                 <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
