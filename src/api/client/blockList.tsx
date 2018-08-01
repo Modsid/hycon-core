@@ -13,7 +13,7 @@ import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText }
 import CardContent from "@material-ui/core/CardContent"
 import { Card, CircularProgress } from "material-ui"
 
-const API = 'https://coincodex.com/api/exchange/get_markets_for_coin_summary/HYC/';
+const API = 'https://cors-anywhere.herokuapp.com/https://coincodex.com/api/exchange/get_markets_for_coin_summary/HYC/';
 
 
 
