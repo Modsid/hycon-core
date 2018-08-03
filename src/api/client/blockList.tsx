@@ -29,7 +29,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null}
+        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -37,7 +37,16 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public componentDidMount() {
+        this.getRecentBlockList(this.state.index)
+       
+         this.getHash = () => {
+        this.state.rest.getMiner().then((data: IMiner) => {
+            this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash:data.networkHashRate })
+            this.state.rest.setLoading(false) 
+        }
         
+        this.getData = () => {
+            
         fetch(API)
       .then(response => response.json())
       .then((data)  => {
@@ -53,15 +62,13 @@ export class BlockList extends React.Component<any, any> {
          .catch((e) => {
           console.log(e);
         });
-       
+        }
          
-        this.getRecentBlockList(this.state.index)
-        this.state.rest.getMiner().then((data: IMiner) => {
-            this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount })
-      this.state.rest.setLoading(false) 
+        
         this.intervalId = setInterval(() => {
             this.getRecentBlockList(this.state.index)
-            this.state.rest.getMiner()
+            this.getHash()
+            this.getData()
             
         }, 15000)
                
@@ -171,7 +178,7 @@ export class BlockList extends React.Component<any, any> {
         : null}
         { this.state.miner ?
           <div id="middle" className='box'>
-            <div className="heading">{this.state.miner.networkHashRate.toLocaleString()} kh/s</div>
+            <div className="heading">{this.state.hash.toLocaleString()} kh/s</div>
             <div className="subtext">Network Hash Rate</div>
           </div>
         : null}
