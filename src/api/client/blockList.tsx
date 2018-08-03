@@ -37,13 +37,11 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public componentDidMount() {
-        this.getRecentBlockList(this.state.index)
-        this.state.rest.setLoading(false)  
-       
-        this.getHash = () => {
+        
+        public getHash() {
             
         this.state.rest.getMiner().then((data: IMiner) => {
-            this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash:data.networkHashRate })
+            this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
                
     }
   }
@@ -51,7 +49,7 @@ export class BlockList extends React.Component<any, any> {
      this.getHash();
                                       
         
-        this.getData = () => {      
+        public getData() {      
             
         fetch(API)
       .then(response => response.json())
@@ -71,7 +69,9 @@ export class BlockList extends React.Component<any, any> {
     }
         this.getData();
          
-        
+        this.state.rest.getMiner().then((data: IMiner) => {
+      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
+      this.state.rest.setLoading(false)
         this.intervalId = setInterval(() => {
             this.getRecentBlockList(this.state.index)
             this.getHash()
