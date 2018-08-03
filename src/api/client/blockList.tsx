@@ -7,6 +7,7 @@ import { BlockLine } from "./blockLine"
 import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
 import { MinerView } from "./minerView"
+import moment from 'moment';
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
@@ -28,7 +29,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, price_hyc: [],currentPrice: null}
+        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, price_hyc: [],currentPrice: null,updatedAt:null, volume: null}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -40,9 +41,13 @@ export class BlockList extends React.Component<any, any> {
         fetch(API)
       .then(response => response.json())
       .then((data)  => {
-            const price = data[0].value;    
+            const price = data[0].value;  
+            const vol= data[0].volume;
+            const updated= data[0].last_update;
             this.setState({
-            currentPrice: data[0].value
+            currentPrice: data[0].value,
+                updatedAt: data[0].last_update,
+                volume: data[0].volume
                     })
                        })
          .catch((e) => {
@@ -127,9 +132,9 @@ export class BlockList extends React.Component<any, any> {
 }
             return <Redirect to={`/address/${this.state.blockHash}`} />
         }
- if (this.state.miner === undefined) {
-            return <div></div>
-        }
+// if (this.state.miner === undefined) {
+  //          return <div></div>
+    //    }
 
 
         return (
@@ -155,11 +160,38 @@ export class BlockList extends React.Component<any, any> {
 </div>
 </div>
 </div>
-   <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} KH/s</span></div></div></div></div>
+  {/* <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Network Hash Rate</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.miner.networkHashRate.toLocaleString()} KH/s</span></div></div></div></div>
 
  { this.state.currentPrice ?
  <div className="jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Price</h1></div><div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365"><span className="jss3781"> {this.state.currentPrice.toLocaleString()} USD</span></div></div></div></div> 
-: null}
+: null} */}
+
+
+
+ <div id="data-container">
+        { this.state.currentPrice ?
+          <div id="left" className='box'>
+            <div className="heading">{this.state.currentPrice.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}</div>
+            <div className="subtext">{'Updated ' + moment.unix(this.state.updatedAt).fromNow()}</div>
+          </div>
+        : null}
+        { this.state.miner ?
+          <div id="middle" className='box'>
+            <div className="heading">{this.state.miner.networkHashRate.toLocaleString()} kh/s</div>
+            <div className="subtext">Network Hash Rate</div>
+          </div>
+        : null}
+        { this.state.volume ?
+          <div id="right" className='box'>
+            <div className="heading">{this.state.volume.toLocaleString()</div>
+            <div className="subtext">24 Hrs Volume </div>
+          </div>
+        : null}
+
+      </div>
+
+
+
 
                 <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
