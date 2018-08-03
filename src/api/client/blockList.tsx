@@ -41,7 +41,6 @@ export class BlockList extends React.Component<any, any> {
         this.state.rest.setLoading(false)  
        
         this.getHash = () => {
-    {
             
         this.state.rest.getMiner().then((data: IMiner) => {
             this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash:data.networkHashRate })
