@@ -7,7 +7,7 @@ import { BlockLine } from "./blockLine"
 import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
 import { MinerView } from "./minerView"
-import moment from 'moment'
+import moment from "moment"
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
@@ -132,9 +132,7 @@ export class BlockList extends React.Component<any, any> {
 }
             return <Redirect to={`/address/${this.state.blockHash}`} />
         }
-// if (this.state.miner === undefined) {
-  //          return <div></div>
-    //    }
+
 
 
         return (
@@ -179,7 +177,7 @@ export class BlockList extends React.Component<any, any> {
         : null}
         { this.state.volume ?
           <div id="right" className='box'>
-            <div className="heading">{this.state.volume.toLocaleString()</div>
+            <div className="heading">{this.state.volume.toLocaleString()}</div>
             <div className="subtext">24 Hrs Volume </div>
           </div>
         : null}
