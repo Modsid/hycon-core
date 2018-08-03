@@ -152,7 +152,6 @@ export class BlockList extends React.Component<any, any> {
  
               
             <div>
-<div className=" donation jss466"><a href="http://htracker.info/address/H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9" className="donatetext jss313 jss319">Donate:H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9</a></div>
 <div className="jss256 jss259 jss257 jss468 jss406 jss467">
 <div className="jss466"><h1 className="jss313 jss319">Check Wallet Balance/Transaction Status</h1></div>
 <div className="jss465"><div className="jss361"><div className="jss369 jss362 jss365">
@@ -181,7 +180,10 @@ export class BlockList extends React.Component<any, any> {
             <div className="heading">{this.state.currentPrice.toLocaleString('us-EN',{ minimumFractionDigits: 4, style: 'currency', currency: 'USD' })}</div>
             <div className="subtext">{'Updated ' + moment.unix(this.state.updatedAt).fromNow()}</div>
           </div>
-        : null}
+        : <div id="left" className='box'>
+            <div className="heading">Fetching...</div>
+            <div className="subtext">HYC Price</div>
+          </div>}
         { this.state.miner ?
           <div id="middle" className='box'>
             <div className="heading">{this.state.hash.toLocaleString()} kh/s</div>
@@ -193,7 +195,10 @@ export class BlockList extends React.Component<any, any> {
             <div className="heading">{this.state.volume.toLocaleString()}</div>
             <div className="subtext">24 Hrs Volume </div>
           </div>
-        : null}
+        : <div id="right" className='box'>
+            <div className="heading">Fetching...</div>
+            <div className="subtext">24 Hrs Volume </div>
+          </div>}
 
       </div>
 
@@ -223,6 +228,7 @@ export class BlockList extends React.Component<any, any> {
                         </tbody>
                     </table>
                 </div>
+<div className=" donation jss466"><a href="http://htracker.info/address/H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9" className="donatetext jss313 jss319">Donate:H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9</a></div>
             </div>
         )
     }
