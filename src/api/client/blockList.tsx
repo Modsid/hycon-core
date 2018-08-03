@@ -39,13 +39,17 @@ export class BlockList extends React.Component<any, any> {
     public componentDidMount() {
         this.getRecentBlockList(this.state.index)
        
-         this.getHash = () => {
+        public getData() 
+    {
+            
         this.state.rest.getMiner().then((data: IMiner) => {
             this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash:data.networkHashRate })
             this.state.rest.setLoading(false) 
-        }
+       
+    }
         
-        this.getData = () => {
+        public getHash()        
+    {
             
         fetch(API)
       .then(response => response.json())
@@ -62,7 +66,7 @@ export class BlockList extends React.Component<any, any> {
          .catch((e) => {
           console.log(e);
         });
-        }
+    }
          
         
         this.intervalId = setInterval(() => {
