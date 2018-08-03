@@ -165,7 +165,7 @@ export class BlockList extends React.Component<any, any> {
  <div id="data-container">
         { this.state.currentPrice ?
           <div id="left" className='box'>
-            <div className="heading">{this.state.currentPrice.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}</div>
+            <div className="heading">{this.state.currentPrice.toLocaleString('us-EN',{ minimumFractionDigits: 4, style: 'currency', currency: 'USD' })}</div>
             <div className="subtext">{'Updated ' + moment.unix(this.state.updatedAt).fromNow()}</div>
           </div>
         : null}
