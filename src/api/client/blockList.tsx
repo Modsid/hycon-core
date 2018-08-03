@@ -40,18 +40,17 @@ export class BlockList extends React.Component<any, any> {
         this.getHash();                                   
         this.getData();
          
-        this.state.rest.getMiner().then((data: IMiner) => {
-      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
-      this.state.rest.setLoading(false)
-        this.intervalId = setInterval(() => {
+        //this.state.rest.getMiner().then((data: IMiner) => {
+     // this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: //data.networkHashRate })
+      this.state.rest.setLoading(false)         
+     // })
+    
+   this.intervalId = setInterval(() => {
             this.getRecentBlockList(this.state.index)
             this.getHash()
             this.getData()
             
         }, 15000)
-               
-      })
-            
       
     }
     
