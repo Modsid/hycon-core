@@ -7,7 +7,7 @@ import { BlockLine } from "./blockLine"
 import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
 import { MinerView } from "./minerView"
-import moment from "moment"
+import * as Moment from 'moment'
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
