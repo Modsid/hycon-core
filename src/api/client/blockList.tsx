@@ -38,7 +38,7 @@ export class BlockList extends React.Component<any, any> {
 
     public componentDidMount() {
       
-     this.state.rest.getTopTipHeight().then((data: height) => {
+     this.state.rest.getTopTipHeight().then((height: number) => {
             this.setState({ localheight: data.height })
                
     })
@@ -46,7 +46,7 @@ export class BlockList extends React.Component<any, any> {
         this.getHash()                                  
         this.getData()
          this.getRecentBlockList(this.state.index)
-        this.state.rest.getMiner().then((height: number) => {
+        this.state.rest.getMiner().then((data: IMiner) => {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
                     this.intervalId = setInterval(() => {
