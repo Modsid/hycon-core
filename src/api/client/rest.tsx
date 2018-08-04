@@ -121,7 +121,9 @@ export interface IRest {
     getAllAccounts(name: string): Promise<{ represent: number, accounts: Array<{ address: string, balance: string }> } | boolean>
     getBlock(hash: string): Promise<IBlock | IResponseError>
     getBlockList(index: number): Promise<{ blocks: IBlock[], length: number }>
+    getBlockList1(index: number): Promise<{ blocks: IBlock[], length: number }>
     getTopTipHeight(): Promise<{ height: number }>
+    getTopTipHeight1(): Promise<{ height: number }>
     getMnemonic(lang: string): Promise<string>
     // [ipeer.ts not implemented] getPeerDetails(hash: string): Promise<IPeer>
     // [ipeer.ts not implemented] getPeersList(hash: string): Promise<IPeer[]>
