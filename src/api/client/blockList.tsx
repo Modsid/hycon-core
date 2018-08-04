@@ -203,7 +203,7 @@ export class BlockList extends React.Component<any, any> {
     }
     
     public getRecentBlockList1(index: number) {
-        this.state.getRemoteBlocks(index).then((result: { blocks: IBlock[], length: number }) => {
+        this.getRemoteBlocks(index).then((result: { blocks: IBlock[], length: number }) => {
             for (const block of result.blocks) {
                 let sum = Long.fromInt(0)
                 for (const tx of block.txs) {
