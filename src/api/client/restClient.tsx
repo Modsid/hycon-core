@@ -156,6 +156,21 @@ export class RestClient implements IRest {
                 }),
         )
     }
+    
+    
+    public getBlockList1(index: number): Promise<{ blocks: IBlock[], length: number }> {
+        return Promise.resolve(
+            fetch(`http://aux.hplorer.com:2444/api/${this.apiVersion}/blockList/${index}`)
+                .then((response) => response.json())
+                .catch((err: Error) => {
+                    console.log(err)
+                }),
+        )
+    }
+    
+    
+
+    
 
     public getTopTipHeight(): Promise<{ height: number }> {
         return Promise.resolve(
