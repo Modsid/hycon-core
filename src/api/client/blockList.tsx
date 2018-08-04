@@ -39,6 +39,7 @@ export class BlockList extends React.Component<any, any> {
     public componentDidMount() {
       
      this.state.rest.getTopTipHeight().then((height: number) => {
+            console.log(height)
             this.setState({ localheight: height })
     })
         this.getRemoteHeight()
@@ -49,16 +50,21 @@ export class BlockList extends React.Component<any, any> {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
                     this.intervalId = setInterval(() => {
-                        if (this.state.height.val()>this.state.localheight.val()){
+                        if (this.state.height.getValue()>this.state.localheight.getValue()){
                             this.getRecentBlockList1(this.state.index)
                             console.log('Triggered when remote height > local')
                             this.getRemoteHeight()
-                            
+                            this.state.rest.getTopTipHeight().then((height: number) => {
+            this.setState({ localheight: height })
+    })
                         }
                         else{
             this.getRecentBlockList(this.state.index)
             console.log('Triggered when local greater than remote')
             this.getRemoteHeight()
+                            this.state.rest.getTopTipHeight().then((height: number) => {
+            this.setState({ localheight: height })
+    })
                         }
             this.getHash()
             this.getData()
