@@ -89,7 +89,7 @@ export class BlockList extends React.Component<any, any> {
     
     public getLocalHeight(){
     
-         fetch('http://35.231.47.239//api/v1/topTipHeight')
+         fetch('http://35.231.47.239/api/v1/topTipHeight')
       .then(response => response.json())
       .then((data)  => {
             const tipheight1 = data.height; 
