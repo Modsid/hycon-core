@@ -49,18 +49,16 @@ export class BlockList extends React.Component<any, any> {
       this.state.rest.setLoading(false)
                     this.intervalId = setInterval(() => {
                         if (parseInt(this.state.remoteheight)>parseInt(this.state.localheight)){
-                            console.log('Triggered when remote height > local')
+                            
                             this.getRecentBlockList1(this.state.index)
- 
                             this.getRemoteHeight()
                             this.getLocalHeight()
                         }
                         else{
-                            console.log('Triggered when local greater than remote')
-            this.getRecentBlockList(this.state.index)
-            
-            this.getRemoteHeight()
-            this.getLocalHeight()              
+                            
+                            this.getRecentBlockList(this.state.index)
+                            this.getRemoteHeight()
+                            this.getLocalHeight()              
                         }
             this.getHash()
             this.getData()
@@ -76,7 +74,7 @@ export class BlockList extends React.Component<any, any> {
       .then(response => response.json())
       .then((data)  => {
             const tipheight = data.height; 
-             console.log('remote:'+tipheight)
+             
             this.setState({
             remoteheight: data.height              
                     })
@@ -95,7 +93,7 @@ export class BlockList extends React.Component<any, any> {
       .then(response => response.json())
       .then((data)  => {
             const tipheight1 = data.height; 
-             console.log('local:'+ tipheight1)
+             
             this.setState({
             localheight: data.height              
                     })
@@ -108,10 +106,6 @@ export class BlockList extends React.Component<any, any> {
     }
     
     
-    
-    
-    
-    
     public getRemoteBlocks(index: number): Promise<{ blocks: IBlock[], length: number }> {
         return Promise.resolve(
             fetch('http://aux.hplorer.com:2444/api/v1/blocklist/0')
@@ -121,9 +115,7 @@ export class BlockList extends React.Component<any, any> {
                 }),
         )
     }
-    
-   
-    
+     
     
     public getHash() {
             
@@ -248,7 +240,7 @@ export class BlockList extends React.Component<any, any> {
         
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
-            return < div ></div >
+            return < div >Loading...</div >
         }
             if (this.state.redirect) {
                 if (this.state.blockHash.length===44){
