@@ -178,15 +178,11 @@ export class HttpServer {
         router.get("/blockList/:index", async (req: express.Request, res: express.Response) => {
             res.json(await this.rest.getBlockList(req.params.index))
         })
-        router.get("/blockList1/:index", async (req: express.Request, res: express.Response) => {
-            res.json(await this.rest.getBlockList1(req.params.index))
-        })
+        
         router.get("/toptipHeight/", async (req: express.Request, res: express.Response) => {
             res.json(await this.rest.getTopTipHeight())
         })
-        router.get("/toptipHeight1/", async (req: express.Request, res: express.Response) => {
-            res.json(await this.rest.getTopTipHeight1())
-        })
+        
      
         router.get("/language", async (req: express.Request, res: express.Response) => {
             res.json("error TS2339: Property 'getLanguage' does not exist on type 'RestServer'.")
