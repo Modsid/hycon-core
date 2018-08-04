@@ -37,16 +37,16 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public componentDidMount() {
-      
      
-        this.getRemoteHeight()
-        this.getLocalHeight()
+        this.getRecentBlockList(this.state.index)
         this.getHash()                                  
         this.getData()
-         this.getRecentBlockList(this.state.index)
+        this.getRemoteHeight()
+        this.getLocalHeight()
         this.state.rest.getMiner().then((data: IMiner) => {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
+            
                     this.intervalId = setInterval(() => {
                         if (parseInt(this.state.remoteheight)>parseInt(this.state.localheight)){
                             
@@ -89,7 +89,7 @@ export class BlockList extends React.Component<any, any> {
     
     public getLocalHeight(){
     
-         fetch('http://htracker.info/api/v1/topTipHeight')
+         fetch('/api/v1/topTipHeight')
       .then(response => response.json())
       .then((data)  => {
             const tipheight1 = data.height; 
@@ -240,7 +240,7 @@ export class BlockList extends React.Component<any, any> {
         
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
-            return < div >Loading...</div >
+            return < div ></div >
         }
             if (this.state.redirect) {
                 if (this.state.blockHash.length===44){
