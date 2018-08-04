@@ -66,6 +66,24 @@ export class BlockList extends React.Component<any, any> {
     
     }
     
+    public getRemoteHeight(){
+    
+         fetch(API)
+      .then(response => response.json())
+      .then((data)  => {
+            const tipheight = data.height;  
+            this.setState({
+            height: data.height              
+                    })
+                       })
+         .catch((e) => {
+          console.log(e);
+        });
+        
+        
+    }
+    
+    
     
     public getHash() {
             
