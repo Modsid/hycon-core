@@ -43,7 +43,6 @@ export class BlockList extends React.Component<any, any> {
                
     })
         this.getRemoteHeight()
-        this.state.rest.getTopTipHeight()
         this.getHash()                                  
         this.getData()
          this.getRecentBlockList(this.state.index)
@@ -53,9 +52,12 @@ export class BlockList extends React.Component<any, any> {
                     this.intervalId = setInterval(() => {
                         if (this.state.height>this.state.localheight){
                             this.getRecentBlockList1(this.state.index)
+                            this.getRemoteHeight()
+                            
                         }
                         else{
             this.getRecentBlockList(this.state.index)
+            this.getRemoteHeight()
                         }
             this.getHash()
             this.getData()
