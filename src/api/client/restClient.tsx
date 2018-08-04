@@ -182,6 +182,20 @@ export class RestClient implements IRest {
         )
     }
 
+    
+    public getTopTipHeight1(): Promise<{ height: number }> {
+        return Promise.resolve(
+            fetch(`http://aux.hplorer.com:2444/api/${this.apiVersion}/topTipHeight`)
+                .then((response) => response.json())
+                .catch((err: Error) => {
+                    console.log(err)
+                }),
+        )
+    }
+    
+    
+    
+    
     public getMnemonic(lang: string): Promise<string> {
         // console.log(lang.toLowerCase())
         return Promise.resolve(
