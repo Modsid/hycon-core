@@ -50,7 +50,7 @@ export class BlockList extends React.Component<any, any> {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
                     this.intervalId = setInterval(() => {
-                        if (this.state.height.getValue()>this.state.localheight.getValue()){
+                        if (parseInt(this.state.height)>parseInt(this.state.localheight)){
                             this.getRecentBlockList1(this.state.index)
                             console.log('Triggered when remote height > local')
                             this.getRemoteHeight()
