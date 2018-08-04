@@ -37,6 +37,19 @@ export class BlockList extends React.Component<any, any> {
     }
 
     public componentDidMount() {
+      
+        //test code 
+        fetch('http://aux.hplorer.com:2444/api/v1/topTipHeight')
+      .then(response => response.json())
+      .then((data)  => {
+            console.log(data);
+                       })
+         .catch((e) => {
+          console.log(e);
+        });
+        //ends
+     
+        
         this.getHash()                                  
         this.getData()
          this.getRecentBlockList(this.state.index)
