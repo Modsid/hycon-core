@@ -29,7 +29,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:null}
+        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:null, localheight: null}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -38,7 +38,10 @@ export class BlockList extends React.Component<any, any> {
 
     public componentDidMount() {
       
-     
+     this.state.rest.getTopTipHeight().then((data: number) => {
+            this.setState({ localheight: data.height })
+               
+    })
         this.getRemoteHeight()
         this.state.rest.getTopTipHeight()
         this.getHash()                                  
@@ -48,7 +51,7 @@ export class BlockList extends React.Component<any, any> {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
                     this.intervalId = setInterval(() => {
-                        if (this.state.height>this.state.rest.getTopTipHeight().height){
+                        if (this.state.height>this.state.localheight){
                             this.getRecentBlockList1(this.state.index)
                         }
                         else{
