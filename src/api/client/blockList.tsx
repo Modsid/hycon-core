@@ -114,7 +114,7 @@ export class BlockList extends React.Component<any, any> {
     
     public getRemoteBlocks(index: number): Promise<{ blocks: IBlock[], length: number }> {
         return Promise.resolve(
-            fetch('http://aux.hplorer.com:2444/api/v1/blocklist/${index}')
+            fetch('http://aux.hplorer.com:2444/api/v1/blocklist/0')
                 .then((response) => response.json())
                 .catch((err: Error) => {
                     console.log(err)
