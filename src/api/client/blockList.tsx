@@ -39,8 +39,8 @@ export class BlockList extends React.Component<any, any> {
     public componentDidMount() {
       
      this.state.rest.getTopTipHeight().then((height: number) => {
-            console.log(height)
-            this.setState({ localheight: height })
+            console.log(height.height)
+            this.setState({ localheight: height.height })
     })
         this.getRemoteHeight()
         this.getHash()                                  
