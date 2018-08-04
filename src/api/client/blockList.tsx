@@ -52,11 +52,13 @@ export class BlockList extends React.Component<any, any> {
                     this.intervalId = setInterval(() => {
                         if (this.state.height>this.state.localheight){
                             this.getRecentBlockList1(this.state.index)
+                            console.log('Triggered when remote height > local')
                             this.getRemoteHeight()
                             
                         }
                         else{
             this.getRecentBlockList(this.state.index)
+            console.log('Triggered when local greater than remote')
             this.getRemoteHeight()
                         }
             this.getHash()
