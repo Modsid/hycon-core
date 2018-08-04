@@ -38,11 +38,9 @@ export class BlockList extends React.Component<any, any> {
 
     public componentDidMount() {
       
-     this.state.rest.getTopTipHeight().then((height: number) => {
-            console.log(height)
-            this.setState({ localheight: height })
-    })
+     
         this.getRemoteHeight()
+        this.getLocalHeight()
         this.getHash()                                  
         this.getData()
          this.getRecentBlockList(this.state.index)
@@ -50,23 +48,17 @@ export class BlockList extends React.Component<any, any> {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
                     this.intervalId = setInterval(() => {
-                        if (parseInt(this.state.height)>parseInt(this.state.localheight)){
+                        if (parseInt(this.state.remoteheight)>parseInt(this.state.localheight)){
                             this.getRecentBlockList1(this.state.index)
                             console.log('Triggered when remote height > local')
                             this.getRemoteHeight()
-                            this.state.rest.getTopTipHeight().then((height: number) => {
-            console.log(height)
-            this.setState({ localheight: height })
-    })
+                            this.getLocalHeight()
                         }
                         else{
             this.getRecentBlockList(this.state.index)
             console.log('Triggered when local greater than remote')
             this.getRemoteHeight()
-                           this.state.rest.getTopTipHeight().then((height: number) => {
-            console.log(height)
-            this.setState({ localheight: height })
-    })
+            this.getLocalHeight()              
                         }
             this.getHash()
             this.getData()
@@ -82,9 +74,9 @@ export class BlockList extends React.Component<any, any> {
       .then(response => response.json())
       .then((data)  => {
             const tipheight = data.height; 
-             console.log(tipheight)
+             console.log('remote:'+tipheight)
             this.setState({
-            height: data.height              
+            remoteheight: data.height              
                     })
                        })
          .catch((e) => {
@@ -93,6 +85,30 @@ export class BlockList extends React.Component<any, any> {
         
         
     }
+    
+    
+    public getLocalHeight(){
+    
+         fetch('http://127.0.0.1/api/v1/topTipHeight')
+      .then(response => response.json())
+      .then((data)  => {
+            const tipheight1 = data.height; 
+             console.log('local:'+ tipheight1)
+            this.setState({
+            localheight: data.height              
+                    })
+                       })
+         .catch((e) => {
+          console.log(e);
+        });
+        
+        
+    }
+    
+    
+    
+    
+    
     
     public getRemoteBlocks(index: number): Promise<{ blocks: IBlock[], length: number }> {
         return Promise.resolve(
