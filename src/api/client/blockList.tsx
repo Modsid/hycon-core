@@ -29,7 +29,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null}
+        this.state = { blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:null}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -38,18 +38,9 @@ export class BlockList extends React.Component<any, any> {
 
     public componentDidMount() {
       
-        //test code 
-        fetch('http://aux.hplorer.com:2444/api/v1/topTipHeight')
-      .then(response => response.json())
-      .then((data)  => {
-            console.log(data);
-                       })
-         .catch((e) => {
-          console.log(e);
-        });
-        //ends
      
-        
+        this.getRemoteHeight()
+        this.state.rest.getTopTipHeight()
         this.getHash()                                  
         this.getData()
          this.getRecentBlockList(this.state.index)
@@ -57,7 +48,12 @@ export class BlockList extends React.Component<any, any> {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
                     this.intervalId = setInterval(() => {
+                        if (this.state.height>this.state.rest.getTopTipHeight().height){
+                            this.getRecentBlockList1(this.state.index)
+                        }
+                        else{
             this.getRecentBlockList(this.state.index)
+                        }
             this.getHash()
             this.getData()
             
@@ -68,7 +64,7 @@ export class BlockList extends React.Component<any, any> {
     
     public getRemoteHeight(){
     
-         fetch(API)
+         fetch('http://aux.hplorer.com:2444/api/v1/topTipHeight')
       .then(response => response.json())
       .then((data)  => {
             const tipheight = data.height;  
@@ -83,6 +79,17 @@ export class BlockList extends React.Component<any, any> {
         
     }
     
+    public getRemoteBlocks(index: number): Promise<{ blocks: IBlock[], length: number }> {
+        return Promise.resolve(
+            fetch('http://aux.hplorer.com:2444/api/v1/blocklist/${index}')
+                .then((response) => response.json())
+                .catch((err: Error) => {
+                    console.log(err)
+                }),
+        )
+    }
+    
+   
     
     
     public getHash() {
@@ -163,6 +170,46 @@ export class BlockList extends React.Component<any, any> {
             })
         })
     }
+    
+    public getRecentBlockList1(index: number) {
+        this.state.getRemoteBlocks(index).then((result: { blocks: IBlock[], length: number }) => {
+            for (const block of result.blocks) {
+                let sum = Long.fromInt(0)
+                for (const tx of block.txs) {
+                    sum = sum.add(hyconfromString(tx.amount))
+                }
+                block.txSummary = hycontoString(sum)
+            }
+            this.setState({
+                blocks: update(
+                    this.state.blocks, {
+                        $splice: [[0, this.state.blocks.length]],
+                    },
+                ),
+            })
+            this.setState({
+                blocks: update(
+                    this.state.blocks, {
+                        $push: result.blocks,
+                    },
+                ),
+                index: update(
+                    this.state.index, {
+                        $set: index,
+                    },
+                ),
+                length: update(
+                    this.state.length, {
+                        $set: result.length,
+                    },
+                ),
+            })
+        })
+    }
+    
+    
+    
+    
 
     public render() {
         
