@@ -312,7 +312,8 @@ export class BlockList extends React.Component<any, any> {
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
                 </div>
 
-                <div>
+                <div className="jss409">                
+                <div className="jss407">
                     <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp table_margined">
                         <thead>
                             <tr>
@@ -331,6 +332,11 @@ export class BlockList extends React.Component<any, any> {
                         </tbody>
                     </table>
                 </div>
+                </div>
+
+
+
+
 <div className=" donation jss466"><a href="http://htracker.info/address/H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9" className="donatetext jss313 jss319">Donate:H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9</a></div>
             </div>
         )
