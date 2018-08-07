@@ -11,7 +11,7 @@ interface IAge {
     diffMin: number
     diffSec: number
 }
-export class BlockLine extends React.Component<any, any> {
+export class txnLine extends React.Component<any, any> {
     public intervalId: any // NodeJS.Timer
     constructor(props: any) {
         super(props)
@@ -66,8 +66,8 @@ export class BlockLine extends React.Component<any, any> {
         return (
             <tr>
                 <td className="mdl-data-table__cell--non-numeric">
-                    <Link to={`/block/${this.state.block.hash}`}>
-                        {this.state.block.height}
+                    <Link to={`/tx/${this.state.block.txs.hash}`}>
+                        {this.state.block.txs.hash}
                     </Link>
                 </td>
                 <td className="mdl-data-table__cell--non-numeric">
