@@ -8,7 +8,7 @@ import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
 import { MinerView } from "./minerView"
 import * as moment from "moment"
-import TransactionTable from "./TransactionTable"
+import { TransactionTable } from "./TransactionTable"
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
@@ -114,15 +114,15 @@ export class BlockList extends React.Component<any, any> {
             fetch('http://aux.hplorer.com:2444/api/v1/blocklist/0')
                 .then((response) => response.json())
             .then((data)  => {
-           id : c.height,
-              txs : c.txs.map( t => { return {
-                block : c.height,
+           id : data.height,
+              txs : data.txs.map( t => { return {
+                block : data.height,
                 tx : t
             }})  
             this.setState({
-            id : c.height,
-              txs : c.txs.map( t => { return {
-                block : c.height,
+            id : data.height,
+              txs : data.txs.map( t => { return {
+                block : data.height,
                 tx : t
             }})              
                     })
