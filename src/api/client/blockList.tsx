@@ -115,16 +115,16 @@ export class BlockList extends React.Component<any, any> {
                 .then((response) => response.json())
             .then((data)  => {
            id : data.height;
-             const txs : data.txs.map( t => { return {
+             const txs : data.txs.map( t => {
                 block : data.height,
                 tx : t
-            }})  
+            })  
             this.setState({
-            id : data.height;
-              txs : data.txs.map( t => { return {
+            id : data.height,
+              txs : data.txs.map( t => {
                 block : data.height,
                 tx : t
-            }})              
+            })              
                     })
                        })
                 .catch((err: Error) => {
