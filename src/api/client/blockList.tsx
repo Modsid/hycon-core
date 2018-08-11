@@ -30,7 +30,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = {blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, txs: [] }
+        this.state = {blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, txs: [], tx:[] }
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -114,10 +114,10 @@ export class BlockList extends React.Component<any, any> {
             fetch('http://aux.hplorer.com:2444/api/v1/blocklist/0')
                 .then((response) => response.json())
             .then((data)  => {
-           id : data.height;
-             const txs : data.txs.map( t => {
-                block : data.height,
-                tx : t
+           id = data.height;
+             const txs = data.txs.map( t => {
+                block = data.height,
+                tx = t
             })  
             this.setState({
             id : data.height,
