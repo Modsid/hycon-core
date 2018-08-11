@@ -8,6 +8,7 @@ import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
 import { MinerView } from "./minerView"
 import * as moment from "moment"
+import TransactionTable from "./TransactionTable"
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
@@ -29,7 +30,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = {blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null}
+        this.state = {blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, txs: [] }
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -53,6 +54,8 @@ export class BlockList extends React.Component<any, any> {
                             this.getRecentBlockList1(this.state.index)
                             this.getRemoteHeight()
                             this.getLocalHeight()
+                            var txs = [].concat.apply([],this.state.txs)
+                            
                         }
                         else{
                             
@@ -110,6 +113,20 @@ export class BlockList extends React.Component<any, any> {
         return Promise.resolve(
             fetch('http://aux.hplorer.com:2444/api/v1/blocklist/0')
                 .then((response) => response.json())
+            .then((data)  => {
+           id : c.height,
+              txs : c.txs.map( t => { return {
+                block : c.height,
+                tx : t
+            }})  
+            this.setState({
+            id : c.height,
+              txs : c.txs.map( t => { return {
+                block : c.height,
+                tx : t
+            }})              
+                    })
+                       })
                 .catch((err: Error) => {
                     console.log(err)
                 }),
@@ -340,24 +357,9 @@ export class BlockList extends React.Component<any, any> {
                 </div>
 
                 <div className="jss409">                
-                <div className="jss407">
-                    <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp table_margined">
-                        <thead>
-                            <tr>
-                                <th className="mdl-data-table__cell--non-numeric">Block</th>
-                                <th className="mdl-data-table__cell--non-numeric">Time</th>
-                                <th className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>Txn Hash</th>
-                               {/* <th className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>Total Sent</th> */}
-                                <th className="mdl-data-table__cell--non-numeric">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.state.blocks.reverse().map((block: IBlock) => {
-                                return <BlockLine key={blockIndex++} block={block} />
-                            })}
-                        </tbody>
-                    </table>
-                </div>
+                
+                   <TransactionTable txs={this.state.txs} showPagination={true} hasBlock={true}/>
+               
                 </div>
 
 
