@@ -34,19 +34,12 @@ class TransactionTable extends Component {
     }
   
     columns = columns.concat([
-    {
-      Header : 'From',
-      accessor : 'tx.from',
-      minWidth : 50,
-      Cell : row => <Link to={`/address/${row.value}`}>{row.value}</Link>
-      //<a href={`/address/${row.value}`}>{row.value}</a>
-      //accessor : 'from'
-  },
+    
   {
-    Header : 'To',
+    Header : 'Hash',
     minWidth : 50,
-    accessor : 'tx.to',
-    Cell : row => <Link to={`/address/${row.value}`}>{row.value}</Link>
+    accessor : 'tx.hash',
+    Cell : row => <Link to={`/tx/${row.value}`}>{row.value}</Link>
   },
     {
         Header : 'Amount',
@@ -59,10 +52,6 @@ class TransactionTable extends Component {
             }
           }
         }
-    },{
-      Header : 'Fee',
-      accessor : 'tx.fee',
-      width : 125
     },
   ])
 
