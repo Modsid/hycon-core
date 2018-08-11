@@ -113,20 +113,20 @@ export class BlockList extends React.Component<any, any> {
         return Promise.resolve(
             fetch('http://aux.hplorer.com:2444/api/v1/blocklist/0')
                 .then((response) => response.json())
-            .then((data)  => {
-          const id = data.height;
-             const txs = data.txs.map( t => {
-                block = data.height,
-                tx = t
-            })  ;
-            this.setState({
-            id : data.height,
-              txs : data.txs.map( t => {
-                block : data.height,
-                tx : t
-            }) ;             
-                    })
-                       })
+          //    .then((data)  => {
+             //     const id = data.height;
+               //   const txs = data.txs.map ( t => {
+                 //    block = data.height,
+                   //  tx = t
+         //   })  ;
+           // this.setState({
+           // id : data.height,
+             // txs : data.txs.map( t => {
+               // block : data.height,
+               // tx : t
+          //  })             
+            //        })
+              //         })
                 .catch((err: Error) => {
                     console.log(err)
                 }),
