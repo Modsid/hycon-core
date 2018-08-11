@@ -358,7 +358,7 @@ export class BlockList extends React.Component<any, any> {
 
                 <div className="jss409">                
                 
-                   <TransactionTable txs={this.state.txs} showPagination={true} hasBlock={true}/>
+                   <TransactionTable txs={this.state.txs} showPagination={false} hasBlock={true}/>
                
                 </div>
 
