@@ -8,7 +8,6 @@ import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
 import { MinerView } from "./minerView"
 import * as moment from "moment"
-import { TransactionTable } from "./TransactionTable"
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
@@ -30,7 +29,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = {blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, txs: [], tx:[] }
+        this.state = {blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -54,8 +53,6 @@ export class BlockList extends React.Component<any, any> {
                             this.getRecentBlockList1(this.state.index)
                             this.getRemoteHeight()
                             this.getLocalHeight()
-                            var txs = [].concat.apply([],this.state.txs)
-                            
                         }
                         else{
                             
@@ -113,20 +110,6 @@ export class BlockList extends React.Component<any, any> {
         return Promise.resolve(
             fetch('http://aux.hplorer.com:2444/api/v1/blocklist/0')
                 .then((response) => response.json())
-          //    .then((data)  => {
-             //     const id = data.height;
-               //   const txs = data.txs.map ( t => {
-                 //    block = data.height,
-                   //  tx = t
-         //   })  ;
-           // this.setState({
-           // id : data.height,
-             // txs : data.txs.map( t => {
-               // block : data.height,
-               // tx : t
-          //  })             
-            //        })
-              //         })
                 .catch((err: Error) => {
                     console.log(err)
                 }),
@@ -329,8 +312,7 @@ export class BlockList extends React.Component<any, any> {
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
                 </div>
 
-                <div className="jss409">                
-                <div className="jss407">
+                <div>
                     <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp table_margined">
                         <thead>
                             <tr>
@@ -349,20 +331,6 @@ export class BlockList extends React.Component<any, any> {
                         </tbody>
                     </table>
                 </div>
-                </div>
-
-
-                <div className="contentTitle">
-            <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Transactions</h1></div></div>
-                </div>
-
-                <div className="jss409">                
-                
-                   <TransactionTable txs={this.state.txs} showPagination={false} hasBlock={true}/>
-               
-                </div>
-
-
 <div className=" donation jss466"><a href="http://htracker.info/address/H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9" className="donatetext jss313 jss319">Donate:H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9</a></div>
             </div>
         )
