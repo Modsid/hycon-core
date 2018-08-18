@@ -10,7 +10,6 @@ import { MinerView } from "./minerView"
 import * as moment from "moment"
 import { TxPoolLine } from "./txPoolLine"
 import { TxLine } from "./txLine"
-import { TxPoolList } from "./txPoolList"
 import { ITxProp } from "./rest"
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
@@ -37,7 +36,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = {blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null}
+        this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [], rest: props.rest, length: 0, index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -46,6 +45,8 @@ export class BlockList extends React.Component<any, any> {
 
     public componentDidMount() {
      
+        this.mounted = true
+        this.getPendingTxs(this.state.index)
         this.getRecentBlockList(this.state.index)
         this.getHash()                                  
         this.getData()
@@ -61,12 +62,14 @@ export class BlockList extends React.Component<any, any> {
                             this.getRecentBlockList1(this.state.index)
                             this.getRemoteHeight()
                             this.getLocalHeight()
+                            this.getPendingTxs(this.state.index)
                         }
                         else{
                             
                             this.getRecentBlockList(this.state.index)
                             this.getRemoteHeight()
-                            this.getLocalHeight()              
+                            this.getLocalHeight() 
+                            this.getPendingTxs(this.state.index)
                         }
             this.getHash()
             this.getData()
@@ -75,6 +78,23 @@ export class BlockList extends React.Component<any, any> {
       })
     
     }
+    
+    public getPendingTxs(index: number) {
+        this.state.rest.setLoading(true)
+        this.state.rest.getPendingTxs(index).then((result: { txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }) => {
+            this.setState({
+                txs: update(this.state.txs, { $splice: [[0, this.state.txs.length]] }),
+            })
+            this.setState({
+                index: update(this.state.index, { $set: index }),
+                length: update(this.state.length, { $set: result.length }),
+                totalAmount: update(this.state.totalAmount, { $set: result.totalAmount }),
+                totalCount: update(this.state.totalCount, { $set: result.totalCount }),
+                totalFee: update(this.state.totalFee, { $set: result.totalFee }),
+                txs: update(this.state.txs, { $push: result.txs }),
+            })
+            this.state.rest.setLoading(false)
+        })
     
     public getRemoteHeight(){
     
