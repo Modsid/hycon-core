@@ -78,7 +78,7 @@ export class BlockList extends React.Component<any, any> {
             this.getHash()
             this.getData()
             
-        }, 15000000)
+        }, 15000)
       })
     
     }
@@ -344,7 +344,8 @@ export class BlockList extends React.Component<any, any> {
       </div>
 
 
-
+<div className="maindata">
+<div className="blocks">
 
                 <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Latest Blocks</h1></div></div>
@@ -369,8 +370,9 @@ export class BlockList extends React.Component<any, any> {
                         </tbody>
                     </table>
                 </div>
+</div>
 
-
+<div className="txn">
   <div className="contentTitle">
             <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Pending Transactions</h1></div></div>
                 </div>
@@ -393,7 +395,8 @@ export class BlockList extends React.Component<any, any> {
                         </tbody>
                     </table>
                 </div>
-
+</div>
+</div>
 
 
 
