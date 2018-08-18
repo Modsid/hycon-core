@@ -46,7 +46,7 @@ export class BlockList extends React.Component<any, any> {
     public componentDidMount() {
      
         this.mounted = true
-        this.getPendingTxs(this.state.index)
+        this.getPendingTxs(this.state.index1)
         this.getRecentBlockList(this.state.index)
         this.getHash()                                  
         this.getData()
