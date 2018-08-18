@@ -78,7 +78,7 @@ export class BlockList extends React.Component<any, any> {
             this.getHash()
             this.getData()
             
-        }, 15000)
+        }, 15000000)
       })
     
     }
