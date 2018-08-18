@@ -98,7 +98,7 @@ export class BlockList extends React.Component<any, any> {
     }
     public getRemoteHeight(){
     
-         fetch('http://aux.hplorer.com:2444/api/v1/topTipHeight')
+         fetch('http://hplorer.com:2441/api/v1/topTipHeight')
       .then(response => response.json())
       .then((data)  => {
             const tipheight = data.height; 
