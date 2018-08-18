@@ -10,6 +10,7 @@ import { MinerView } from "./minerView"
 import * as moment from "moment"
 import { TxPoolLine } from "./txPoolLine"
 import { TxLine } from "./txLine"
+import {TxPoolList} from ".txPoolList"
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
