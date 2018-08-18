@@ -8,6 +8,8 @@ import { IBlock, IRest, IMiner } from "./rest"
 import { hyconfromString, hycontoString } from "./stringUtil"
 import { MinerView } from "./minerView"
 import * as moment from "moment"
+import { TxPoolLine } from "./txPoolLine"
+import { TxLine } from "./txLine"
 
 import { match, Redirect, RouteComponentProps, RouteProps } from "react-router"
 import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core"
@@ -331,6 +333,35 @@ export class BlockList extends React.Component<any, any> {
                         </tbody>
                     </table>
                 </div>
+
+
+  <div className="contentTitle">
+            <div className="jss1231 jss256 jss259 jss257 jss468 jss406 jss467"><div className="jss466"><h1 className="jss313 jss319">Pending Transactions</h1></div></div>
+                </div>
+
+                <div>
+                    <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp table_margined">
+                        <thead>
+                            <tr>
+                                <th className="mdl-data-table__cell--non-numeric">Hash</th>
+                                <th className="mdl-data-table__cell--non-numeric">From</th>
+                                <th className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>To</th>
+                           
+                                <th className="mdl-data-table__cell--non-numeric">Amount</th>
+                                <th className="mdl-data-table__cell--numeric">Fee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.txs.map((tx: ITxProp) => {
+                                return <TxPoolLine key={txIndex++} tx={tx} />
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
 <div className=" donation jss466"><a href="http://htracker.info/address/H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9" className="donatetext jss313 jss319">Donate:H3ecJtw8WhPCD4AnoxUbrKZMnvNuq9iX9</a></div>
             </div>
         )
