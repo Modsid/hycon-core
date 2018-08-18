@@ -45,6 +45,7 @@ export class BlockList extends React.Component<any, any> {
      
         this.mounted = true
         this.getRecentBlockList(this.state.index)
+        this.getRecentBlockList1(this.state.index)
         this.getPendingTxs(this.state.index1)
         this.getHash()                                  
         this.getData()
@@ -58,17 +59,18 @@ export class BlockList extends React.Component<any, any> {
                         if (parseInt(this.state.remoteheight)>parseInt(this.state.localheight)){
                             
                             this.getRecentBlockList1(this.state.index)
-                            this.getRemoteHeight()
-                            this.getLocalHeight()
-                            this.getPendingTxs(this.state.index1)
+                            
+                           
                         }
                         else{
                             
                             this.getRecentBlockList(this.state.index)
-                            this.getRemoteHeight()
-                            this.getLocalHeight() 
-                            this.getPendingTxs(this.state.index1)
+                            
+                            
                         }
+            this.getRemoteHeight()
+            this.getLocalHeight()
+            this.getPendingTxs(this.state.index1)            
             this.getHash()
             this.getData()
             
@@ -78,7 +80,7 @@ export class BlockList extends React.Component<any, any> {
     }
     
     public getPendingTxs(index1: number) {
-        this.state.rest.setLoading(true)
+       // this.state.rest.setLoading(true)
         this.state.rest.getPendingTxs(index1).then((result: { txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }) => {
             this.setState({
                 txs: update(this.state.txs, { $splice: [[0, this.state.txs.length]] }),
@@ -91,7 +93,7 @@ export class BlockList extends React.Component<any, any> {
                 totalFee: update(this.state.totalFee, { $set: result.totalFee }),
                 txs: update(this.state.txs, { $push: result.txs }),
             })
-            this.state.rest.setLoading(false)
+           // this.state.rest.setLoading(false)
         })
     }
     public getRemoteHeight(){
