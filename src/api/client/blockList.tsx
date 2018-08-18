@@ -244,7 +244,7 @@ export class BlockList extends React.Component<any, any> {
     
 
     public render() {
-        
+        let txIndex = 0
         let blockIndex = 0
         if (this.state.blocks.length === 0) {
             return < div ></div >
