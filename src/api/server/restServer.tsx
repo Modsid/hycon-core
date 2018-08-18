@@ -724,7 +724,7 @@ export class RestServer implements IRest {
 
     public getPendingTxs(index: number): Promise<{ txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }> {
         let pageCount: number = 0
-        const cntPerPage: number = 10
+        const cntPerPage: number = 20
         const startIndex = cntPerPage * index
         const txPoolTxs = this.txPool.getPending(startIndex, cntPerPage)
         pageCount = Math.ceil(txPoolTxs.length / cntPerPage)
