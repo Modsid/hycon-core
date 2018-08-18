@@ -375,12 +375,11 @@ export class BlockList extends React.Component<any, any> {
                     <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp table_margined">
                         <thead>
                             <tr>
-                                <th className="mdl-data-table__cell--non-numeric">Hash</th>
-                                <th className="mdl-data-table__cell--non-numeric">From</th>
-                                <th className="mdl-data-table__cell--numeric" style={{ paddingRight: "10%" }}>To</th>
-                           
-                                <th className="mdl-data-table__cell--non-numeric">Amount</th>
-                                <th className="mdl-data-table__cell--numeric">Fee</th>
+                                    <th className="mdl-data-table__cell--non-numeric">Hash</th>
+                                    <th className="mdl-data-table__cell--non-numeric">From</th>
+                                    <th className="mdl-data-table__cell--non-numeric">To</th>
+                                    <th className="mdl-data-table__cell--non-numeric">Amount</th>
+                     
                             </tr>
                         </thead>
                         <tbody>
