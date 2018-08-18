@@ -33,8 +33,8 @@ export class TxPoolLine extends React.Component<any, any> {
                         {this.state.tx.to}
                     </Link>
                 </td>
-                <td className="numericTd">{this.state.tx.amount} HYCON</td>
-                <td className="numericTd">{this.state.tx.fee} HYCON</td>
+                <td className="numericTd">{this.state.tx.amount.toLocaleString({ maximumFractionDigits: 1})} HYCON</td>
+              {/*  <td className="numericTd">{this.state.tx.fee} HYCON</td> */}
             </tr>
         )
     }
