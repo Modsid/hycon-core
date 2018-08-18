@@ -19,6 +19,10 @@ import { Card, CircularProgress } from "material-ui"
 
 const API = 'https://cors-anywhere.herokuapp.com/https://coincodex.com/api/exchange/get_markets_for_coin_summary/HYC/';
 
+interface ITxListView {
+    rest: IRest
+    txs: ITxProp[]
+}
 
 
 interface IBlockListView {
