@@ -250,6 +250,12 @@ export class BlockList extends React.Component<any, any> {
         if (this.state.blocks.length === 0) {
             return < div ></div >
         }
+        
+        if (this.state.txs.length === 0) {
+            return < div ></div >
+        }
+        
+        
             if (this.state.redirect) {
                 if (this.state.blockHash.length===44){
                     return <Redirect to={`/tx/${this.state.blockHash}`} />
