@@ -19,7 +19,10 @@ import { Card, CircularProgress } from "material-ui"
 
 const API = 'https://cors-anywhere.herokuapp.com/https://coincodex.com/api/exchange/get_markets_for_coin_summary/HYC/';
 
-
+interface ITxListView {
+    rest: IRest
+    txs: ITxProp[]
+}
 
 
 interface IBlockListView {
@@ -88,7 +91,7 @@ export class BlockList extends React.Component<any, any> {
             })
             this.setState({
                 index1: update(this.state.index1, { $set: index1 }),
-                length: update(20, { $set: result.length }),
+                length: update(this.state.length, { $set: result.length }),
                 totalAmount: update(this.state.totalAmount, { $set: result.totalAmount }),
                 totalCount: update(this.state.totalCount, { $set: result.totalCount }),
                 totalFee: update(this.state.totalFee, { $set: result.totalFee }),
