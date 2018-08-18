@@ -36,7 +36,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [],  index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null}
+        this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [],  index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, index1: 0}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -62,14 +62,14 @@ export class BlockList extends React.Component<any, any> {
                             this.getRecentBlockList1(this.state.index)
                             this.getRemoteHeight()
                             this.getLocalHeight()
-                            this.getPendingTxs(this.state.index)
+                            this.getPendingTxs(this.state.index1)
                         }
                         else{
                             
                             this.getRecentBlockList(this.state.index)
                             this.getRemoteHeight()
                             this.getLocalHeight() 
-                            this.getPendingTxs(this.state.index)
+                            this.getPendingTxs(this.state.index1)
                         }
             this.getHash()
             this.getData()
@@ -79,14 +79,14 @@ export class BlockList extends React.Component<any, any> {
     
     }
     
-    public getPendingTxs(index: number) {
+    public getPendingTxs(index1: number) {
         this.state.rest.setLoading(true)
-        this.state.rest.getPendingTxs(index).then((result: { txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }) => {
+        this.state.rest.getPendingTxs(index1).then((result: { txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }) => {
             this.setState({
                 txs: update(this.state.txs, { $splice: [[0, this.state.txs.length]] }),
             })
             this.setState({
-                index: update(this.state.index, { $set: index }),
+                index1: update(this.state.index1, { $set: index1 }),
                 length: update(this.state.length, { $set: result.length }),
                 totalAmount: update(this.state.totalAmount, { $set: result.totalAmount }),
                 totalCount: update(this.state.totalCount, { $set: result.totalCount }),
