@@ -188,8 +188,8 @@ export class BlockList extends React.Component<any, any> {
             const circS= data.circulatingSupply;
            
             this.setState({
-            Tsupply: Math.round(((data.totalSupply/1000000000)*100)/100),
-                Csupply: Math.round(((data.circulatingSupply/1000000000)*100)/100)
+            Tsupply: Math.round((data.totalSupply/1000000000)*100)/100,
+                Csupply: Math.round((data.circulatingSupply/1000000000)*100)/100
                 
                     })
                        })
