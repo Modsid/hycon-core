@@ -164,7 +164,7 @@ export class BlockList extends React.Component<any, any> {
         fetch(API)
       .then(response => response.json())
       .then((data)  => {
-            const price = data[0].value;  
+            const price = data[0].va9lue;  
             const vol= data[0].volume;
             const updated= data[0].last_update;
             this.setState({
@@ -188,8 +188,8 @@ export class BlockList extends React.Component<any, any> {
             const circS= data.circulatingSupply;
            
             this.setState({
-            Tsupply: Math.round(data.totalSupply/1000000000),
-                Csupply: Math.round(data.circulatingSupply/1000000000)
+            Tsupply: Math.round(((data.totalSupply/1000000000)*100)/100),
+                Csupply: Math.round(((data.circulatingSupply/1000000000)*100)/100)
                 
                     })
                        })
@@ -368,7 +368,7 @@ export class BlockList extends React.Component<any, any> {
           </div>}
 { this.state.Tsupply ?
           <div id="right" className='box'>
-            <div className="heading">{this.state.Csupply.toLocaleString('us-EN', { maximumFractionDigits: 1,style: 'decimal'})}B/{this.state.Tsupply.toLocaleString('us-EN', { maximumFractionDigits: 1, style: 'decimal'})}B</div>
+            <div className="heading">{this.state.Csupply.toLocaleString()}B/{this.state.Tsupply.toLocaleString()}B</div>
             <div className="subtext">Circulating/Total Supply</div>
           </div>
         : <div id="right" className='box'>
