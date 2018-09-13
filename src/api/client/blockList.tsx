@@ -368,7 +368,7 @@ export class BlockList extends React.Component<any, any> {
           </div>}
 { this.state.Tsupply ?
           <div id="right" className='box'>
-            <div className="heading">{this.state.Csupply.toLocaleString({ maximumFractionDigits: 0})}/{this.state.Tsupply.toLocaleString({ maximumFractionDigits: 0})}</div>
+            <div className="heading">{this.state.Csupply.toLocaleString('us-EN', { maximumFractionDigits: 0,style: 'decimal'})}/{this.state.Tsupply.toLocaleString('us-EN', { maximumFractionDigits: 0, style: 'decimal'})}</div>
             <div className="subtext">Circulating/Total Supply</div>
           </div>
         : <div id="right" className='box'>
