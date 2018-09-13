@@ -18,6 +18,7 @@ import CardContent from "@material-ui/core/CardContent"
 import { Card, CircularProgress } from "material-ui"
 
 const API = 'https://cors-anywhere.herokuapp.com/https://coincodex.com/api/exchange/get_markets_for_coin_summary/HYC/';
+const SUPPLY = 'https://api.hycon.io/api/v2/supply';
 
 interface ITxListView {
     rest: IRest
@@ -51,6 +52,7 @@ export class BlockList extends React.Component<any, any> {
         this.getPendingTxs(this.state.index1)
         this.getHash()                                  
         this.getData()
+        this.getSupply()
         this.getRemoteHeight()
         this.getLocalHeight()
         this.state.rest.getMiner().then((data: IMiner) => {
@@ -77,7 +79,7 @@ export class BlockList extends React.Component<any, any> {
             this.getPendingTxs(this.state.index1)            
             this.getHash()
             this.getData()
-            
+            this.getSupply()
         }, 15000)
       })
     
@@ -175,6 +177,30 @@ export class BlockList extends React.Component<any, any> {
           console.log(e);
         });
     }
+    
+   
+     public getSupply() {      
+            
+        fetch(SUPPLY)
+      .then(response => response.json())
+      .then((data)  => {
+            const totalS = data.totalSupply;  
+            const circS= data.circulatingSupply;
+           
+            this.setState({
+            Tsupply: data.totalSupply,
+                Csupply: data.circulatingSupply
+                
+                    })
+                       })
+         .catch((e) => {
+          console.log(e);
+        });
+    }
+    
+   
+    
+    
     
     
     
@@ -340,6 +366,18 @@ export class BlockList extends React.Component<any, any> {
             <div className="heading">Fetching...</div>
             <div className="subtext">24 Hrs Volume </div>
           </div>}
+{ this.state.Tsupply ?
+          <div id="right" className='box'>
+            <div className="heading">{this.state.Csupply.toLocaleString({ maximumFractionDigits: 0})}/{this.state.Tsupply.toLocaleString({ maximumFractionDigits: 0})}</div>
+            <div className="subtext">Circulating/Total Supply</div>
+          </div>
+        : <div id="right" className='box'>
+            <div className="heading">Fetching...</div>
+            <div className="subtext">Circulating/Total Supply</div>
+          </div>}
+
+
+
 
       </div>
 
