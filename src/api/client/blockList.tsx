@@ -164,7 +164,7 @@ export class BlockList extends React.Component<any, any> {
         fetch(API)
       .then(response => response.json())
       .then((data)  => {
-            const price = data[0].va9lue;  
+            const price = data[0].value;  
             const vol= data[0].volume;
             const updated= data[0].last_update;
             this.setState({
