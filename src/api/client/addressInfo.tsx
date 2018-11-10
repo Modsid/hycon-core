@@ -33,7 +33,19 @@ export class AddressInfo extends React.Component<IAddressProps, IAddressView> {
     public componentDidMount() {
         this.mounted = true
         this.state.rest.setLoading(true)
-        this.state.rest.getAddressInfo(this.state.hash).then((data: IWalletAddress) => {
+        
+        public getRemoteAddress(address: string): Promise<IWalletAddress> {
+        const apiVer = this.apiVersion
+        return Promise.resolve(
+            fetch(`https://api.hycon.io/api/v2/address/${address}`)
+                .then((response) => response.json())
+                .catch((err: Error) => {
+                    console.log(err)
+                }),
+        )
+    }
+           
+        this.getRemoteAddress(this.state.hash).then((data: IWalletAddress) => {
             if (this.mounted) {
                 this.setState({
                     address: data,
@@ -46,7 +58,7 @@ export class AddressInfo extends React.Component<IAddressProps, IAddressView> {
     }
     public render() {
         if (this.state.address === undefined) {
-            return < div > <div className="notfound">Address Not Found</div></div >
+            return < div > <div className="notfound">Loading...</div></div >
         }
         let count = 0
         let minedIndex = 0
