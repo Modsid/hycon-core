@@ -85,9 +85,22 @@ export class BlockList extends React.Component<any, any> {
     
     }
     
+   
+     public getRemoteTxs(index: number): Promise<{ txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }> {
+        return Promise.resolve(
+            fetch('http://hplorer.com:2441/api/v1/txList/0')
+                .then((response) => response.json())
+                .catch((err: Error) => {
+                    console.log(err)
+                }),
+        )
+    }
+    
+    
+    
     public getPendingTxs(index1: number) {
        this.state.rest.setLoading(true)
-        fetch('http://hplorer.com:2441/api/v1/txList/0').then((result: { txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }) => {
+       this.state.rest.getRemoteTxs(index).then((result: { txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }) => {
             this.setState({
                 txs: update(this.state.txs, { $splice: [[0, this.state.txs.length]] }),
             })
@@ -102,6 +115,10 @@ export class BlockList extends React.Component<any, any> {
             this.state.rest.setLoading(false)
         })
     }
+    
+     
+    
+    
     public getRemoteHeight(){
     
          fetch('http://hplorer.com:2441/api/v1/topTipHeight')
