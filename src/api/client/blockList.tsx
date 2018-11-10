@@ -362,7 +362,7 @@ export class BlockList extends React.Component<any, any> {
           </div>}
         { this.state.miner ?
           <div id="middle" className='box'>
-            <div className="heading">{this.state.hash.toLocaleString()} kh/s</div>
+            <div className="heading">{this.state.hash.toLocaleString()}</div>
             <div className="subtext">Network Hash Rate</div>
           </div>
         : null}
