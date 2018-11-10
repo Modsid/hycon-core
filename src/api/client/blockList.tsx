@@ -17,7 +17,7 @@ import { Button, Dialog, DialogTitle, Grid, Icon, List, ListItem, ListItemText }
 import CardContent from "@material-ui/core/CardContent"
 import { Card, CircularProgress } from "material-ui"
 
-const API = 'https://cors-anywhere.herokuapp.com/https://coincodex.com/api/exchange/get_markets_for_coin_summary/HYC/';
+const API = 'https://api.coinmarketcap.com/v2/ticker/3147/';
 const SUPPLY = 'https://api.hycon.io/api/v2/supply';
 
 interface ITxListView {
@@ -48,7 +48,7 @@ export class BlockList extends React.Component<any, any> {
     public componentDidMount() {
      
         this.mounted = true
-        this.getRecentBlockList(this.state.index)
+        this.getRecentBlockList1(this.state.index)
         this.getPendingTxs(this.state.index1)
         this.getHash()                                  
         this.getData()
@@ -71,7 +71,7 @@ export class BlockList extends React.Component<any, any> {
                         }
                         else{
                             
-                            this.getRecentBlockList(this.state.index)
+                            this.getRecentBlockList1(this.state.index)
                             
                             
                         }
@@ -80,7 +80,7 @@ export class BlockList extends React.Component<any, any> {
             this.getHash()
             this.getData()
             this.getSupply()
-        }, 15000)
+        }, 7000)
       })
     
     }
@@ -123,7 +123,7 @@ export class BlockList extends React.Component<any, any> {
     
     public getLocalHeight(){
     
-         fetch('/api/v1/topTipHeight')
+         fetch('https://api.hycon.io/api/v2/topTipHeight')
       .then(response => response.json())
       .then((data)  => {
             const tipheight1 = data.height; 
@@ -153,10 +153,21 @@ export class BlockList extends React.Component<any, any> {
     
     public getHash() {
             
-        this.state.rest.getMiner().then((data: IMiner) => {
-            this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
-               
-    })
+        fetch('http://hplorer.com:2441/api/v1/getMiner')
+      .then(response => response.json())
+      .then((data)  => {
+            const hash1 = data.networkHashRate; 
+             
+            this.setState({
+            hash: data.networkHashRate              
+                    })
+                       })
+         .catch((e) => {
+          console.log(e);
+        });
+        
+        
+    }
   }
     
     public getData() {      
@@ -164,13 +175,13 @@ export class BlockList extends React.Component<any, any> {
         fetch(API)
       .then(response => response.json())
       .then((data)  => {
-            const price = data[0].value;  
-            const vol= data[0].volume;
-            const updated= data[0].last_update;
+            const price = data.data.quotes.USD.price;  
+            const vol= data.data.quotes.USD.volume_24h;
+            const updated= data.data.last_updated;
             this.setState({
-            currentPrice: data[0].value,
-                updatedAt: data[0].last_update,
-                volume: data[0].volume
+            currentPrice: data.data.quotes.USD.price,
+                updatedAt: data.data.last_updated,
+                volume:data.data.quotes.USD.volume_24h
                     })
                        })
          .catch((e) => {
