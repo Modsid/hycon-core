@@ -87,7 +87,7 @@ export class BlockList extends React.Component<any, any> {
     
     public getPendingTxs(index1: number) {
        this.state.rest.setLoading(true)
-        this.state.rest.getPendingTxs(index1).then((result: { txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }) => {
+        fetch('http://hplorer.com:2441/api/v1/txList/0').then((result: { txs: ITxProp[], length: number, totalCount: number, totalAmount: string, totalFee: string }) => {
             this.setState({
                 txs: update(this.state.txs, { $splice: [[0, this.state.txs.length]] }),
             })
