@@ -166,8 +166,6 @@ export class BlockList extends React.Component<any, any> {
           console.log(e);
         });
         
-        
-    }
   }
     
     public getData() {      
