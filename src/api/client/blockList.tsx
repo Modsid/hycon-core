@@ -326,12 +326,7 @@ export class BlockList extends React.Component<any, any> {
         if (this.state.blocks.length === 0) {
             return < div ></div >
         }
-        
-        if (this.state.txs.length === 0) {
-            return < div ></div >
-        }
-        
-        
+                
             if (this.state.redirect) {
                 if (this.state.blockHash.length===44){
                     return <Redirect to={`/tx/${this.state.blockHash}`} />
@@ -427,11 +422,16 @@ export class BlockList extends React.Component<any, any> {
                                 <th className="mdl-data-table__cell--numeric">Size(kB)</th>
                             </tr>
                         </thead>
+{ this.state.txs ?
                         <tbody>
                             {this.state.blocks.reverse().map((block: IBlock) => {
                                 return <BlockLine key={blockIndex++} block={block} />
                             })}
                         </tbody>
+:                        <tbody>
+                          <th className="mdl-data-table__cell--non-numeric"> No Pending Transactions </th>
+                        </tbody>}
+
                     </table>
                 </div>
 </div>
