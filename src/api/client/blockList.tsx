@@ -19,6 +19,7 @@ import { Card, CircularProgress } from "material-ui"
 
 const API = 'https://api.coinmarketcap.com/v2/ticker/3147/';
 const SUPPLY = 'https://api.hycon.io/api/v2/supply';
+const RANK= 'https://api.coingecko.com/api/v3/coins/hycon';
 
 interface ITxListView {
     rest: IRest
@@ -38,7 +39,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [],  index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, index1: 0}
+        this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [],  index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, index1: 0,currentMcap:null,currentRank:null}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -79,6 +80,7 @@ export class BlockList extends React.Component<any, any> {
             this.getPendingTxs(this.state.index1)            
             this.getHash()
             this.getData()
+            this.getRank()
             this.getSupply()
         }, 7000)
       })
@@ -203,6 +205,28 @@ export class BlockList extends React.Component<any, any> {
           console.log(e);
         });
     }
+    
+     public getRank() {      
+            
+        fetch(RANK)
+      .then(response => response.json())
+      .then((data)  => {
+            const rank = data.market_cap_rank;  
+            const mcap= data.market_data.market_cap.usd;
+            this.setState({
+            currentRank: data.market_cap_rank,
+            currentMcap: data.market_data.market_cap.usd
+                    })
+                       })
+         .catch((e) => {
+          console.log(e);
+        });
+    }
+    
+    
+    
+    
+    
     
    
      public getSupply() {      
@@ -402,6 +426,28 @@ export class BlockList extends React.Component<any, any> {
 
       </div>
 
+ <div id="data-container">
+        { this.state.currentRank ?
+          <div id="left" className='box'>
+            <div className="heading">{this.state.currentRank.toLocaleString()}</div>
+            <div className="subtext">Rank by MarketCap</div>
+          </div>
+        : <div id="left" className='box'>
+            <div className="heading">Loading...</div>
+            <div className="subtext">Rank by MarketCap</div>
+          </div>}
+        
+        { this.state.currentMcap ?
+          <div id="right" className='box'>
+            <div className="heading">{this.state.currentMcap.toLocaleString('us-EN',{style: 'currency', currency: 'USD' })}</div>
+            <div className="subtext">MarketCap in USD</div>
+          </div>
+        : <div id="right" className='box'>
+            <div className="heading">Loading...</div>
+            <div className="subtext">MarketCap in USD</div>
+          </div>}
+
+      </div>
 
 <div className="maindata">
 <div className="blocks">
