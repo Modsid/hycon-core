@@ -428,21 +428,21 @@ export class BlockList extends React.Component<any, any> {
 
  <div id="data-container">
         { this.state.currentRank ?
-          <div id="left" className='box'>
+          <div id="middle" className='box'>
             <div className="heading">{this.state.currentRank.toLocaleString()}</div>
             <div className="subtext">Rank by MarketCap</div>
           </div>
-        : <div id="left" className='box'>
+        : <div id="middle" className='box'>
             <div className="heading">Loading...</div>
             <div className="subtext">Rank by MarketCap</div>
           </div>}
         
         { this.state.currentMcap ?
-          <div id="right" className='box'>
+          <div id="middle" className='box'>
             <div className="heading">{this.state.currentMcap.toLocaleString('us-EN',{style: 'currency', currency: 'USD' })}</div>
             <div className="subtext">MarketCap in USD</div>
           </div>
-        : <div id="right" className='box'>
+        : <div id="middle" className='box'>
             <div className="heading">Loading...</div>
             <div className="subtext">MarketCap in USD</div>
           </div>}
