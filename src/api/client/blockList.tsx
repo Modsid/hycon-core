@@ -39,7 +39,7 @@ export class BlockList extends React.Component<any, any> {
     public mounted: boolean = false
     constructor(props: any) {
         super(props)
-        this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [],  index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, index1: 0,currentMcap:null,currentRank:null}
+        this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [],  index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, index1: 0,currentMcap:null,currentRank:null,currentTime:null}
     }
     public componentWillUnmount() {
         this.mounted = false
@@ -54,6 +54,8 @@ export class BlockList extends React.Component<any, any> {
         this.getHash()                                  
         this.getData()
         this.getSupply()
+        this.getRank()
+        this.getTime()
         this.getRemoteHeight()
         this.getLocalHeight()
         this.state.rest.getMiner().then((data: IMiner) => {
@@ -81,6 +83,7 @@ export class BlockList extends React.Component<any, any> {
             this.getHash()
             this.getData()
             this.getRank()
+            this.getTime()
             this.getSupply()
         }, 7000)
       })
@@ -223,7 +226,22 @@ export class BlockList extends React.Component<any, any> {
         });
     }
     
-    
+    public getTime() {      
+            
+        fetch('http://hplorer.com:2441/api/v1/blocklist/0')
+      .then(response => response.json())
+      .then((data)  => {
+            const block0 = data.blocks[""0""].timeStamp;  
+            const block19= data.blocks[19].timeStamp;
+            this.setState({
+            currentTime: (block19-block0)/20000,
+           
+                    })
+                       })
+         .catch((e) => {
+          console.log(e);
+        });
+    }
     
     
     
@@ -428,11 +446,11 @@ export class BlockList extends React.Component<any, any> {
 
  <div id="data-container">
         { this.state.currentRank ?
-          <div id="middle" className='box'>
+          <div id="left" className='box'>
             <div className="heading">{this.state.currentRank.toLocaleString()}</div>
             <div className="subtext">Rank by MarketCap</div>
           </div>
-        : <div id="middle" className='box'>
+        : <div id="left" className='box'>
             <div className="heading">Loading...</div>
             <div className="subtext">Rank by MarketCap</div>
           </div>}
@@ -445,6 +463,16 @@ export class BlockList extends React.Component<any, any> {
         : <div id="middle" className='box'>
             <div className="heading">Loading...</div>
             <div className="subtext">MarketCap in USD</div>
+          </div>}
+
+{ this.state.currentTime ?
+          <div id="right" className='box'>
+            <div className="heading">{this.state.currentTime.toLocaleString()}s</div>
+            <div className="subtext">Average BlockTime</div>
+          </div>
+        : <div id="right" className='box'>
+            <div className="heading">Fetching...</div>
+            <div className="subtext">Average BlockTime</div>
           </div>}
 
       </div>
