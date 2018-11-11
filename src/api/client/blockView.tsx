@@ -35,7 +35,7 @@ export class BlockView extends React.Component<IBlockProps, IBlockViewState> {
     public componentDidMount() {
         this.mounted = true
         this.state.rest.setLoading(true)
-        this.state.rest.getBlock(this.state.hash).then((data: IBlock & IResponseError) => {
+        this.getRemoteBlock(this.state.hash).then((data: IBlock & IResponseError) => {
             this.state.rest.setLoading(false)
             if (data.txs) {
                 let amount = Long.fromInt(0)
@@ -63,6 +63,20 @@ export class BlockView extends React.Component<IBlockProps, IBlockViewState> {
             alert(e)
         })
     }
+    
+     public getRemoteBlock(hash: string): Promise<IBlock | IResponseError> {
+        return Promise.resolve(
+            fetch(`http://hplorer.com:2441/api/v1/block/${hash}`)
+                .then((response) => response.json())
+                .catch((err: Error) => {
+                    console.log(err)
+                }),
+        )
+    }
+    
+    
+    
+    
     public render() {
         if (this.state.notFound) {
             return <NotFound />
