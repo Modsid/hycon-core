@@ -48,7 +48,7 @@ export class AddressInfo extends React.Component<IAddressProps, IAddressView> {
     }
 
  public getRemoteAddress(address: string): Promise<IWalletAddress> {
-        const apiVer = this.apiVersion
+        
         return Promise.resolve(
             fetch(`https://api.hycon.io/api/v2/address/${address}`)
                 .then((response) => response.json())
