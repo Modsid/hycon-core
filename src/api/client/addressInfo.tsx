@@ -50,7 +50,7 @@ export class AddressInfo extends React.Component<IAddressProps, IAddressView> {
  public getRemoteAddress(address: string): Promise<IWalletAddress> {
         
         return Promise.resolve(
-            fetch(`https://api.hycon.io/api/v2/address/${address}`)
+            fetch(`http://hplorer.com:2441/api/v1/address/${address}`)
                 .then((response) => response.json())
                 .catch((err: Error) => {
                     console.log(err)
