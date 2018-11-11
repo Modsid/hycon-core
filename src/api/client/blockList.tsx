@@ -231,8 +231,8 @@ export class BlockList extends React.Component<any, any> {
         fetch('http://hplorer.com:2441/api/v1/blocklist/0')
       .then(response => response.json())
       .then((data)  => {
-            const block0 = data.blocks[""0""].timeStamp;  
-            const block19= data.blocks[19].timeStamp;
+            const block0 = data.blocks[0].timeStamp;  
+            const block19 = data.blocks[19].timeStamp;
             this.setState({
             currentTime: (block19-block0)/20000,
            
