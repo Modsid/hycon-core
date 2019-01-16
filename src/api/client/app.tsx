@@ -195,7 +195,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
 
                     <div className="page-content">
 
-<div className="coinmarketcap-currency-widget" data-currencyid="3147" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
+
 
                         <Switch>
                             {/* <Route exact path='/' component={() => { return <Home name={this.state.name} /> }} /> */}
