@@ -44,6 +44,13 @@ export class BlockList extends React.Component<any, any> {
     public componentWillUnmount() {
         this.mounted = false
         window.clearTimeout(this.intervalId)
+        const script = document.createElement("script");
+
+        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
+        script.type = 'text/javascript';
+        script.async = true;
+
+        document.body.appendChild(script);
     }
 
     public componentDidMount() {
@@ -59,13 +66,7 @@ export class BlockList extends React.Component<any, any> {
         this.getRemoteHeight()
         this.getLocalHeight()
         
-        const script = document.createElement("script");
-
-        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
-        script.type = 'text/javascript';
-        script.async = true;
-
-        document.body.appendChild(script);
+       
         this.state.rest.getMiner().then((data: IMiner) => {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
