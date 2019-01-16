@@ -410,7 +410,7 @@ export class BlockList extends React.Component<any, any> {
 </div>
 </div>
  
-
+<div className="coinmarketcap-currency-widget" data-currencyid="3147" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
 
  <div id="data-container">
 
