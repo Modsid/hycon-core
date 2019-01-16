@@ -129,7 +129,17 @@ export class App extends React.Component<{ rest: IRest }, any> {
         )
     }
     
-   
+   public componentWillMount() {
+       
+            const script = document.createElement("script");
+
+            script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
+            script.type = 'text/javascript';
+            script.async = false;
+
+             document.body.appendChild(script);
+        
+    }
     
     public handleBlockHash(data: any) {
         this.setState({ blockHash: data.target.value })
@@ -184,6 +194,9 @@ export class App extends React.Component<{ rest: IRest }, any> {
 
 
                     <div className="page-content">
+
+<div className="coinmarketcap-currency-widget" data-currencyid="3147" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
+
                         <Switch>
                             {/* <Route exact path='/' component={() => { return <Home name={this.state.name} /> }} /> */}
                             <Route exact path="/" component={this.home} />
