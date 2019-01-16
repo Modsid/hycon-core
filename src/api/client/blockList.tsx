@@ -44,13 +44,13 @@ export class BlockList extends React.Component<any, any> {
     
      public componentWillMount() {
        
-        const script = document.createElement("script");
+            const script = document.createElement("script");
 
-        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
-        script.type = 'text/javascript';
-        script.async = true;
-        
-         document.body.appendChild(script);
+            script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
+            script.type = 'text/javascript';
+            script.async = true;
+
+             document.body.appendChild(script);
         
     }
     
@@ -81,6 +81,13 @@ export class BlockList extends React.Component<any, any> {
                     this.intervalId = setInterval(() => {
                         this.getRemoteHeight()
                         this.getLocalHeight()
+                        const script = document.createElement("script");
+
+        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
+        script.type = 'text/javascript';
+        script.async = true;
+        
+         document.body.appendChild(script);
                         
                         if (parseInt(this.state.remoteheight)>parseInt(this.state.localheight)){
                             
@@ -418,10 +425,10 @@ export class BlockList extends React.Component<any, any> {
 </div>
  
 
-
+<div className="coinmarketcap-currency-widget" data-currencyid="3147" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
 
  <div id="data-container">
-<div className="coinmarketcap-currency-widget" data-currencyid="3147" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
+
         { this.state.currentPrice ?
           <div id="left" className='box'>
             <div className="heading">{this.state.currentPrice.toLocaleString('us-EN',{ minimumFractionDigits: 4, style: 'currency', currency: 'USD' })}</div>
