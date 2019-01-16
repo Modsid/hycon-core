@@ -129,7 +129,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
         )
     }
     
-    public componentWillUnmount() {
+    public componentWillMount() {
        
         const script = document.createElement("script");
 
