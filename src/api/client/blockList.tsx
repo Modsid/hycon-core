@@ -81,7 +81,7 @@ export class BlockList extends React.Component<any, any> {
              document.body.appendChild(script);
                 
                 }, 500)
-      })
+      
             
                     this.intervalId = setInterval(() => {
                         this.getRemoteHeight()
