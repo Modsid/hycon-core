@@ -128,6 +128,17 @@ export class App extends React.Component<{ rest: IRest }, any> {
             <MinerView rest={this.rest} />
         )
     }
+    
+    public componentWillUnmount() {
+        this.mounted = false
+        const script = document.createElement("script");
+
+        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
+        script.type = 'text/javascript';
+        script.async = true;
+        
+    }
+    
     public handleBlockHash(data: any) {
         this.setState({ blockHash: data.target.value })
     }
