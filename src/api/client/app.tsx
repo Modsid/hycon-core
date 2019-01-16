@@ -130,7 +130,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
     }
     
     public componentWillUnmount() {
-        this.mounted = false
+       
         const script = document.createElement("script");
 
         script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
