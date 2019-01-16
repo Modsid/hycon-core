@@ -42,17 +42,7 @@ export class BlockList extends React.Component<any, any> {
         this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [],  index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, index1: 0,currentMcap:null,currentRank:null,currentTime:null}
     }
     
-     public componentWillMount() {
-       
-            const script = document.createElement("script");
-
-            script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
-            script.type = 'text/javascript';
-            script.async = false;
-
-             document.body.appendChild(script);
-        
-    }
+     
     
     public componentWillUnmount() {
         this.mounted = false
@@ -63,13 +53,7 @@ export class BlockList extends React.Component<any, any> {
     public componentDidMount() {
      
         
-         const script = document.createElement("script");
-
-        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
-        script.type = 'text/javascript';
-        script.async = false;
-        
-         document.body.appendChild(script);
+       
         this.mounted = true
         this.getRecentBlockList1(this.state.index)
         this.getPendingTxs(this.state.index1)
@@ -427,7 +411,6 @@ export class BlockList extends React.Component<any, any> {
 </div>
  
 
-<div className="coinmarketcap-currency-widget" data-currencyid="3147" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
 
  <div id="data-container">
 
