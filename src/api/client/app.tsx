@@ -135,7 +135,7 @@ export class App extends React.Component<{ rest: IRest }, any> {
 
             script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
             script.type = 'text/javascript';
-            script.async = false;
+            script.async = true;
 
              document.body.appendChild(script);
         
