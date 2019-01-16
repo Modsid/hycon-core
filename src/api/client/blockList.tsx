@@ -48,7 +48,7 @@ export class BlockList extends React.Component<any, any> {
 
             script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
             script.type = 'text/javascript';
-            script.async = true;
+            script.async = false;
 
              document.body.appendChild(script);
         
@@ -62,6 +62,14 @@ export class BlockList extends React.Component<any, any> {
 
     public componentDidMount() {
      
+        
+         const script = document.createElement("script");
+
+        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
+        script.type = 'text/javascript';
+        script.async = false;
+        
+         document.body.appendChild(script);
         this.mounted = true
         this.getRecentBlockList1(this.state.index)
         this.getPendingTxs(this.state.index1)
@@ -81,13 +89,7 @@ export class BlockList extends React.Component<any, any> {
                     this.intervalId = setInterval(() => {
                         this.getRemoteHeight()
                         this.getLocalHeight()
-                        const script = document.createElement("script");
-
-        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
-        script.type = 'text/javascript';
-        script.async = true;
-        
-         document.body.appendChild(script);
+                       
                         
                         if (parseInt(this.state.remoteheight)>parseInt(this.state.localheight)){
                             
