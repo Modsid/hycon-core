@@ -41,6 +41,19 @@ export class BlockList extends React.Component<any, any> {
         super(props)
         this.state = {txs: [], rest: props.rest, length: 0,  totalCount: 0, totalFee: "0", totalAmount: "0" ,blocks: [],  index: 0, currentPrice: null,updatedAt:null, volume: null, miner:null, height:0, localheight: null, index1: 0,currentMcap:null,currentRank:null,currentTime:null}
     }
+    
+     public componentWillMount() {
+       
+        const script = document.createElement("script");
+
+        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
+        script.type = 'text/javascript';
+        script.async = true;
+        
+         document.body.appendChild(script);
+        
+    }
+    
     public componentWillUnmount() {
         this.mounted = false
         window.clearTimeout(this.intervalId)
