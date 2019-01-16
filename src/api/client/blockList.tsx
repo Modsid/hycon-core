@@ -58,6 +58,13 @@ export class BlockList extends React.Component<any, any> {
         this.getTime()
         this.getRemoteHeight()
         this.getLocalHeight()
+        
+        const script = document.createElement("script");
+
+        script.src = "https://files.coinmarketcap.com/static/widget/currency.js";
+        script.async = true;
+
+        document.body.appendChild(script);
         this.state.rest.getMiner().then((data: IMiner) => {
      this.setState({ miner: data, minerAddress: data.currentMinerAddress, cpuMinerCount: data.cpuCount, hash: data.networkHashRate })
       this.state.rest.setLoading(false)
@@ -401,7 +408,6 @@ export class BlockList extends React.Component<any, any> {
 </div>
 </div>
  
-<script src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
 <div className="coinmarketcap-currency-widget" data-currencyid="3147" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
 
 
