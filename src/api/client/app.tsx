@@ -137,6 +137,8 @@ export class App extends React.Component<{ rest: IRest }, any> {
         script.type = 'text/javascript';
         script.async = true;
         
+         document.body.appendChild(script);
+        
     }
     
     public handleBlockHash(data: any) {
